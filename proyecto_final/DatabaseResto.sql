@@ -10,7 +10,6 @@ CREATE table Mesas(
 create table Platos(
 	IdPlato int primary key NOT NULL identity(1,1),
 	NombrePlato varchar(50) not null,
-	Descripcion varchar(50),
 	PrecioPlato money not null,
 	stock int not null
 )
