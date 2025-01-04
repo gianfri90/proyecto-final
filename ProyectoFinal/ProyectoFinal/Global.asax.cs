@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace proyecto_final
+namespace ProyectoFinal
 {
     public class Global : System.Web.HttpApplication
     {
