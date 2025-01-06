@@ -20,9 +20,7 @@
                 <div class="d-flex w-100 align-items-center">
                     <div class="d-flex w-100 align-items-center">
                     <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
-                    </div>
-                    <span class="navbar-brand mb-0 h1 mx-auto text-center">Restoran Japones</span>
-                    <div class>
+                        <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burguer house</span>
                         <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link active" href="#">Registrarse</a></li>
                             <li class="drpodown-item"><a class="nav-link" href="#">H</a></li>
