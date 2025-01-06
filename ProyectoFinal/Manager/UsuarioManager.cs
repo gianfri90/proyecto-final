@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Manager
 {
-    public class Class1
+    public class UsuarioManager
     {
 
     }
