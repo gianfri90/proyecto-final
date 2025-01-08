@@ -12,10 +12,17 @@
             <div class="d-flex w-100 align-items-center">
                 <div class="mb-3">
                     <label for="InputContrasenia">Contaseña</label>
-                    <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="Contraseña" type="password"></asp:TextBox>
+                    <%if (!Mostrar)
+                        {%>
+                        <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="Contraseña" type="password"></asp:TextBox>
+                    <% }
+                        else
+                        {%>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control mb-2" placeholder="Contraseña" type="text"></asp:TextBox>
+                    <%}%>
                 </div>
                 <div class="ms-n1">
-                    <asp:Button ID="BtMostrarContra" runat="server" Text="Mostrar" />
+                    <asp:Button ID="BtMostrarContra" runat="server" Text="Mostrar" OnClick="BtMostrarContra_Click" />
                 </div>
             </div>
         </div>
