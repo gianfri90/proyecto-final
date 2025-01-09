@@ -12,24 +12,29 @@ namespace ProyectoFinal
     public partial class IniciarSesion : System.Web.UI.Page
     {
         public bool Mostrar;
+        public string tipo;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 Mostrar = false;
+                tipo = "password";
+                TbContrasenia.Attributes["type"] = tipo;
             }
         }
 
         protected void BtMostrarContra_Click(object sender, EventArgs e)
         {
-            if (Mostrar) 
-            { 
-                Mostrar = false;
-            }
-            else
-            {
-                Mostrar = true;
-            }
+            tipo = "text";
+            Mostrar = true;
+            TbContrasenia.Attributes["type"] = tipo;
+        }
+
+        protected void BtOcultarContraseña_Click(object sender, EventArgs e)
+        {
+            tipo = "password";
+            Mostrar = false;
+            TbContrasenia.Attributes["type"] = tipo;
         }
     }
 }
