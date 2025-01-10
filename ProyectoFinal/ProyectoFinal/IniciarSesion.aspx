@@ -15,13 +15,14 @@
                     <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="Contraseña"></asp:TextBox>
                 </div>
                 <div class="ms-n1">
+                    
                     <%if (!Mostrar)
                         {%>
                             <asp:Button ID="BtMostrarContraña" runat="server" Text="Mostrar" OnClick="BtMostrarContra_Click" />
                         <%}
                     else
                     {%>
-                    <asp:Button ID="BtOcultarContraseña" runat="server" Text="Ocultar" OnClick="BtOcultarContraseña_Click" />
+                            <asp:Button ID="BtOcultarContraseña" runat="server" Text="Ocultar" OnClick="BtOcultarContraseña_Click" />
                     <%}%>
                 </div>
             </div>
