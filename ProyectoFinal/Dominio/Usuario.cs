@@ -13,12 +13,13 @@ namespace Dominio
         NORMAL = 2
         
     }
-    internal class Usuario
+    public class Usuario
     {
         public int IdUsuario {  get; set; }
         public string Mail {  get; set; }
         public string Contraseña {  get; set; }
-
+        public string Nombre {  get; set; }
+        public string Apellido {  get; set; }
         public TipoUsuario tipoUsuario { get; set; }
         public bool esAdministrador()
         {

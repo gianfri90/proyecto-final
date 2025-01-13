@@ -61,7 +61,7 @@ namespace Dominio
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

@@ -1,4 +1,4 @@
-use resto
+use RESTO
 go
 
 INSERT INTO Mesas (NumeroMesa)
@@ -23,8 +23,8 @@ VALUES
 INSERT INTO TipoUsuario (Tipo)
 VALUES (1), (2);
 
-INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario)
+INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
 VALUES 
-('cliente@ejemplo.com', 'password123', 2),
-('mesero@ejemplo.com', 'password123', 2),
-('admin@ejemplo.com', 'admin123', 1);
+('cliente@ejemplo.com', 'password123', 2,'g','h'),
+('mesero@ejemplo.com', 'password123', 2,'n','m'),
+('admin@ejemplo.com', 'admin123', 1,'y','u');

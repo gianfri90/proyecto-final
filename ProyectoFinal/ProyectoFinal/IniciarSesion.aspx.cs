@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Manager;
+using Dominio;
 
 namespace ProyectoFinal
 {
@@ -35,6 +37,26 @@ namespace ProyectoFinal
             tipo = "password";
             Mostrar = false;
             TbContrasenia.Attributes["type"] = tipo;
+        }
+
+        protected void BtAceptar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            UsuarioManager usuarios = new UsuarioManager();
+            try
+            {
+                usuario.Mail = TbMail.Text;
+                usuario.Contraseña = TbContrasenia.Text;
+                usuarios.IniciarSesion(usuario);
+                Session.Add("Usuario",usuario);
+                Response.Redirect("default.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

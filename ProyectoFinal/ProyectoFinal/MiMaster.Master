@@ -22,12 +22,15 @@
                     <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
                         <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burguer house</span>
                         <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
-                            <li class="nav-brand"><a class="nav-link active" href="#">Registrarse</a></li>
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="Default.aspx">Mesas</a></li>
-                            </ul>
+                            <li class="nav-brand"><a class="nav-link active" href="/Registarse.aspx">Registrarse</a></li>
+                            <%if (Session["Usuario"] != null)
+                                {%>
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="Default.aspx">Mesas</a></li>
+                                    </ul>
+                               <% } %>
                             <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
                             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
                         </ul>
