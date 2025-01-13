@@ -21,7 +21,7 @@ namespace ProyectoFinal
                 tipo = "password";
                 TbContrasenia.Attributes["type"] = tipo;
             }
-            if (Session["Usuario"] == null || ((Usuario)Session["Usuario"]).esAdministrador())
+            if (Session["Usuario"] == null || ((Usuario)Session["Usuario"]).esAdministrador() == false)
             {
                 Session.Add("error", "debes ser administrador");
                 Response.Redirect("Default.aspx", false);
