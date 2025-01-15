@@ -58,7 +58,7 @@ create or alter procedure sp_RegistarUsuariio(
 )AS 
 BEGIN 
 	insert into Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
-	values (@Email,@contraseña,g,@Nombre,@Apellido)
+	values (@Email,@contraseña,2,@Nombre,@Apellido)
 END
 
 create or alter procedure sp_BuscarUsuario(
