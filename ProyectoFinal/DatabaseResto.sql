@@ -35,6 +35,13 @@ CREATE TABLE Usuario(
 	IdTipoUsuario int FOREIGN KEY REFERENCES TipoUsuario(IdTipoUsuario)
 );
 
+create table TablaxMesa(
+	IdUsuario int foreign key references Usuario(IdUsuario),
+	IdMesa int foreign key references Mesas(IdMesa),
+	Fecha date not null,
+	primary key(IdMesa,Fecha)
+)
+
 create or alter procedure sp_IniciarSesion(
 	@Email varchar(250), 
 	@Contraseña varchar(50)
@@ -42,4 +49,22 @@ create or alter procedure sp_IniciarSesion(
 begin
 	select IdUsuario, Nombre, Apellido, Email, Contrasenia, IdTipoUsuario from Usuario WHERE Email = @Email and  Contrasenia = @Contraseña
 end
+
+create or alter procedure sp_RegistarUsuariio(
+	@Email varchar(250),
+	@contraseña varchar(50),
+	@Nombre varchar(50),
+	@Apellido varchar(50)
+)AS 
+BEGIN 
+	insert into Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
+	values (@Email,@contraseña,g,@Nombre,@Apellido)
+END
+
+create or alter procedure sp_BuscarUsuario(
+	@Email varchar(250)
+)AS 
+BEGIN 
+	select u.IdUsuario from Usuario u where u.Email = @Email
+END
 

@@ -20,6 +20,7 @@ namespace ProyectoFinal
                 Mostrar = false;
                 tipo = "password";
                 TbContrasenia.Attributes["type"] = tipo;
+                TbConfirmarConftraseña.Attributes["type"] = tipo;
             }
             if (Session["Usuario"] == null || ((Usuario)Session["Usuario"]).esAdministrador() == false)
             {
@@ -33,6 +34,7 @@ namespace ProyectoFinal
             tipo = "text";
             Mostrar = true;
             TbContrasenia.Attributes["type"] = tipo;
+            TbConfirmarConftraseña.Attributes["type"] = tipo;
         }
 
         protected void BtOcultarContraseña_Click(object sender, EventArgs e)
@@ -40,11 +42,34 @@ namespace ProyectoFinal
             tipo = "password";
             Mostrar = false;
             TbContrasenia.Attributes["type"] = tipo;
+            TbConfirmarConftraseña.Attributes["type"] = tipo;
         }
 
         protected void BtAceptar_Click(object sender, EventArgs e)
         {
-            
+            Usuario usuario = new Usuario();
+            UsuarioManager usuarioManager = new UsuarioManager();
+            usuario.Mail = TbMail.Text;
+            if (usuarioManager.ExisteUsuario(usuario) == false)
+            {
+                if (TbContrasenia.Text == TbConfirmarConftraseña.Text)
+                {
+                    usuario.Nombre = TbNombre.Text;
+                    usuario.Apellido = TbApellido.Text;
+                    usuario.Contraseña = TbContrasenia.Text;
+                    usuarioManager.RegistrarUsuario(usuario);
+                    Response.Redirect("Default.aspx",false);
+                }
+                else
+                {
+                    Response.Redirect("error.aspx", false);
+                }
+            }
+            else
+            {
+                Session.Add("error", "el usuario ya existe");
+                Response.Redirect("IniciarSesion.aspx", false);
+            }
         }
     }
 }

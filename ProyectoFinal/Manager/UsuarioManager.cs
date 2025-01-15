@@ -36,5 +36,57 @@ namespace Manager
                 datos.cerrarConexion();
             }
         }
+
+        public void RegistrarUsuario(Usuario usuarios)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_RegistarUsuariio");
+                datos.setearParametros("@Email", usuarios.Mail);
+                datos.setearParametros("@contraseña", usuarios.Contraseña);
+                datos.setearParametros("@Nombre",usuarios.Nombre);
+                datos.setearParametros("@Apellido",usuarios.Apellido);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool ExisteUsuario(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_BuscarUsuario");
+                datos.setearParametros("@Email", usuario.Mail);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            if (usuario.IdUsuario > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

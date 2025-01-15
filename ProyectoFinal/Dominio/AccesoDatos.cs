@@ -69,13 +69,13 @@ namespace Dominio
         {
             comando.Parameters.AddWithValue(nombre, valor);
         }
-        public int ejecutarEscalar()
+        public void ejecutarEscalar()
         {
             comando.Connection = conexion;
             try
             {
                 conexion.Open();
-                return int.Parse(comando.ExecuteScalar().ToString());
+                comando.ExecuteScalar();
             }
             catch (Exception ex)
             {
