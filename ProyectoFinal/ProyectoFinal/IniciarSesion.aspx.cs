@@ -47,9 +47,12 @@ namespace ProyectoFinal
             {
                 usuario.Mail = TbMail.Text;
                 usuario.Contraseña = TbContrasenia.Text;
-                usuarios.IniciarSesion(usuario);
-                Session.Add("Usuario",usuario);
-                Response.Redirect("default.aspx", false);
+                if (usuarios.IniciarSesion(usuario))
+                {
+                    Session.Add("Usuario", usuario);
+                    Response.Redirect("default.aspx", false);
+                }
+                
             }
             catch (Exception ex)
             {

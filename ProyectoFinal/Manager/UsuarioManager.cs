@@ -9,7 +9,7 @@ namespace Manager
 {
     public class UsuarioManager
     {
-        public void IniciarSesion(Usuario usuarios)
+        public bool IniciarSesion(Usuario usuarios)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -24,7 +24,9 @@ namespace Manager
                     usuarios.tipoUsuario = (int)datos.Lector["IdTipoUsuario"] == 2 ? TipoUsuario.NORMAL : TipoUsuario.ADMIN;
                     usuarios.Apellido = (string)datos.Lector["Apellido"];
                     usuarios.Nombre = (string)datos.Lector["Nombre"];
+                    return true;
                 }
+                return false;
             }
             catch (Exception ex)
             {
