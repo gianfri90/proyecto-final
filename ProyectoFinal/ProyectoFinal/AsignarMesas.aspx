@@ -8,7 +8,7 @@
                     <asp:GridView CssClass="table table-light" id="DgvMesa" runat="server" AutoGenerateColumns ="false">
                     <columns>
                         <asp:BoundField HeaderText="Mesa" DataField="NumeroMesa" />
-                        <asp:BoundField HeaderText="Mesero" DataField="usuario.IdUsuario" />
+                        <asp:BoundField HeaderText="Mesero" DataField="usuario.Nombre" />
                         <asp:CheckBoxField HeaderText="Habilitado" DataField="Estado" />
                         <asp:CommandField ShowSelectButton="true" SelectText="&#x270d" HeaderText="Administrar" />
                     </columns>

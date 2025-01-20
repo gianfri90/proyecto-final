@@ -81,7 +81,8 @@ GO
 create or alter procedure sp_ListarMesa
 as
 begin
-	SELECT IdMesa, NumeroMesa, Estado, IdUsuario from Mesas
+	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa, m.Estado as Estado, m.IdUsuario as IdUsuario, u.Nombre as Nombre from Mesas m
+	inner join Usuario u on m.IdUsuario = u.IdUsuario
 end
 
 

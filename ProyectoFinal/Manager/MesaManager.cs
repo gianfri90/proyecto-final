@@ -25,6 +25,7 @@ namespace Manager
                     aux.Estado = (bool)datos.Lector["Estado"];
                     aux.usuario = new Usuario();
                     aux.usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    aux.usuario.Nombre = (string)datos.Lector["Nombre"];
                     mesas.Add(aux);
                 }
             }
