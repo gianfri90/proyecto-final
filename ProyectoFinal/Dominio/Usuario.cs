@@ -25,5 +25,9 @@ namespace Dominio
         {
             return tipoUsuario == TipoUsuario.ADMIN ? true : false;
         }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

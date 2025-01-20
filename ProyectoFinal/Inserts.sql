@@ -1,9 +1,6 @@
 use RESTO
 go
 
-INSERT INTO Mesas (NumeroMesa)
-VALUES (1), (2), (3), (4), (5);
-
 INSERT INTO Platos (NombrePlato, PrecioPlato, stock)
 VALUES 
 ('Pizza Margherita', 8.99, 20),
@@ -25,6 +22,9 @@ VALUES (1), (2);
 
 INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
 VALUES 
-('cliente@ejemplo.com', 'password123', 2,'g','h'),
+('cliente@ejemplo.com', 'password123', 2,'Gianfri','Panta'),
 ('mesero@ejemplo.com', 'password123', 2,'n','m'),
 ('admin@ejemplo.com', 'admin123', 1,'y','u');
+
+INSERT INTO Mesas (NumeroMesa,Estado,IdUsuario)
+VALUES (1,0,1), (2,0,1), (3,0,2), (4,0,1), (5,0,1);
