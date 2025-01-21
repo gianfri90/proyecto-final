@@ -16,8 +16,8 @@ namespace ProyectoFinal
         {
 			try
 			{
-				MesaManager mesasManager = new MesaManager();
-				DgvMesa.DataSource = mesasManager.listarMesa();
+                MeseroXmesaManager meseromesaManager = new MeseroXmesaManager();
+                DgvMesa.DataSource = meseromesaManager.ListarMesas();
 				DgvMesa.DataBind();
 			}
 			catch (Exception ex)
@@ -25,6 +25,11 @@ namespace ProyectoFinal
 
                 throw ex;
             }
+        }
+
+        protected void DgvMesa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("AsignarMesa.aspx", false);
         }
     }
 }

@@ -67,7 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AsignarMesas.aspx" />
+    <Content Include="AsignarMesa.aspx" />
+    <Content Include="MesasMesero.aspx" />
     <Content Include="DetaslleMesa.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
@@ -78,12 +79,19 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsignarMesas.aspx.cs">
-      <DependentUpon>AsignarMesas.aspx</DependentUpon>
+    <Compile Include="AsignarMesa.aspx.cs">
+      <DependentUpon>AsignarMesa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AsignarMesas.aspx.designer.cs">
-      <DependentUpon>AsignarMesas.aspx</DependentUpon>
+    <Compile Include="AsignarMesa.aspx.designer.cs">
+      <DependentUpon>AsignarMesa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MesasMesero.aspx.cs">
+      <DependentUpon>MesasMesero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MesasMesero.aspx.designer.cs">
+      <DependentUpon>MesasMesero.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetaslleMesa.aspx.cs">
       <DependentUpon>DetaslleMesa.aspx</DependentUpon>

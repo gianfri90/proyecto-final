@@ -21,7 +21,6 @@ go
 CREATE table Mesas(
 	IdMesa int primary key NOT NULL identity(1,1),
 	NumeroMesa int unique,
-	IdUsuario int foreign key references Usuario(IdUsuario),
 	Estado bit not null
 );
 go
@@ -44,10 +43,15 @@ go
 
 create table MeseroxMesa(
 	IdMesa int foreign key references Mesas(IdMesa),
-	Fecha date not null,
+	IdUsuario int foreign key references Usuario(IdUsuario),
+	Fecha date,
 	primary key(IdMesa,Fecha)
 )
 go
+
+create procedure sp_ListarUsuario
+as
+begin
 
 create procedure sp_IniciarSesion(
 	@Email varchar(250), 
@@ -84,7 +88,15 @@ begin
 	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa, m.Estado as Estado, m.IdUsuario as IdUsuario, u.Nombre as Nombre from Mesas m
 	inner join Usuario u on m.IdUsuario = u.IdUsuario
 end
+GO 
 
+create or alter procedure sp_ListarMeseroXmesa
+as
+begin
+	SELECT  m.NumeroMesa as NumeroMesa,  Mm.IdUsuario as IdUsuario, u.Nombre as Nombre, Mm.Fecha as fecha from MeseroXmesa Mm
+	inner join Usuario u on Mm.IdUsuario = u.IdUsuario
+	inner join Mesas m on Mm.IdMesa = m.IdMesa
+end
 
 
 
