@@ -12,8 +12,10 @@ namespace ProyectoFinal
 {
     public partial class AsignarMesas : System.Web.UI.Page
     {
+        public bool m;
         protected void Page_Load(object sender, EventArgs e)
         {
+            m = false;
 			try
 			{
                 MeseroXmesaManager meseromesaManager = new MeseroXmesaManager();
@@ -29,7 +31,8 @@ namespace ProyectoFinal
 
         protected void DgvMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect("AsignarMesa.aspx", false);
+            m = true;
+            
         }
     }
 }

@@ -5,7 +5,12 @@
     <div class="row justify-content-center mt-3">
         <div class ="col-3">
             <div class="m-3">
-                <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+                <asp:Label ID="IdMesero" runat="server" Text="Mesero"></asp:Label>
+                <asp:DropDownList ID="DdlMesero" runat="server"></asp:DropDownList>
+            </div>
+            <div class="m-3">
+                <asp:Label ID="IdMesa" runat="server" Text="Mesa"></asp:Label>
+                <asp:DropDownList ID="Ddlmesa" runat="server"></asp:DropDownList>
             </div>
         </div>
     </div>

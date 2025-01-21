@@ -49,10 +49,6 @@ create table MeseroxMesa(
 )
 go
 
-create procedure sp_ListarUsuario
-as
-begin
-
 create procedure sp_IniciarSesion(
 	@Email varchar(250), 
 	@Contraseña varchar(50)
@@ -85,8 +81,7 @@ GO
 create or alter procedure sp_ListarMesa
 as
 begin
-	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa, m.Estado as Estado, m.IdUsuario as IdUsuario, u.Nombre as Nombre from Mesas m
-	inner join Usuario u on m.IdUsuario = u.IdUsuario
+	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa, m.Estado as Estado from Mesas m
 end
 GO 
 
