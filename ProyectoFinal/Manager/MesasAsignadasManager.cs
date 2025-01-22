@@ -7,19 +7,19 @@ using Dominio;
 
 namespace Manager
 {
-    public class MeseroXmesaManager
+    public class MesasAsignadasManager
     {
-        public List<MeseroXmesa> ListarMesas()
+        public List<MesasAsignadas> ListarMesaAsignada()
         {
-            List<MeseroXmesa> aux = new List<MeseroXmesa>();
+            List<MesasAsignadas> aux = new List<MesasAsignadas>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("sp_ListarMeseroXmesa");
+                datos.setearProcedimiento("sp_ListarMesasAsignadas");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    MeseroXmesa meseroMesa = new MeseroXmesa();
+                    MesasAsignadas meseroMesa = new MesasAsignadas();
                     meseroMesa.Fecha = (DateTime)datos.Lector["fecha"];
                     meseroMesa.mesa = new Mesa();
                     meseroMesa.mesa.NumeroMesa = (int)datos.Lector["NumeroMesa"];
@@ -40,5 +40,24 @@ namespace Manager
             }
             return aux;
         }
+
+        public void AsignarMesero(int idMesa,int idMesero)
+        {
+            MesasAsignadas mesasAsignadas = new MesasAsignadas();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_AsignarMesero");
+                datos.setearParametros("@IdMesa",idMesa);
+                datos.setearParametros("@IdMesero",idMesero);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

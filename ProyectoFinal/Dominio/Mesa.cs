@@ -12,5 +12,9 @@ namespace Dominio
         public int NumeroMesa { get; set; }
         public bool Estado {  get; set; }
         public Usuario usuario {  get; set; }
+        public override string ToString()
+        {
+            return NumeroMesa.ToString();
+        }
     }
 }

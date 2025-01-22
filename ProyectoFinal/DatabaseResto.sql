@@ -20,8 +20,7 @@ go
 
 CREATE table Mesas(
 	IdMesa int primary key NOT NULL identity(1,1),
-	NumeroMesa int unique,
-	Estado bit not null
+	NumeroMesa int unique
 );
 go
 
@@ -41,7 +40,7 @@ create table Bebidas(
 );
 go
 
-create table MeseroxMesa(
+create table MesasAsignadas(
 	IdMesa int foreign key references Mesas(IdMesa),
 	IdUsuario int foreign key references Usuario(IdUsuario),
 	Fecha date,
@@ -81,16 +80,40 @@ GO
 create or alter procedure sp_ListarMesa
 as
 begin
-	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa, m.Estado as Estado from Mesas m
+	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa from Mesas m
 end
 GO 
 
-create or alter procedure sp_ListarMeseroXmesa
+create or alter procedure sp_ListarMesasAsignadas
 as
 begin
-	SELECT  m.NumeroMesa as NumeroMesa,  Mm.IdUsuario as IdUsuario, u.Nombre as Nombre, Mm.Fecha as fecha from MeseroXmesa Mm
+	SELECT  m.NumeroMesa as NumeroMesa,  Mm.IdUsuario as IdUsuario, u.Nombre as Nombre, Mm.Fecha as fecha from MesasAsignadas Mm
 	inner join Usuario u on Mm.IdUsuario = u.IdUsuario
 	inner join Mesas m on Mm.IdMesa = m.IdMesa
+end
+GO 
+
+create procedure sp_listarUsuario
+as
+begin
+	SELECT IdUsuario, Nombre from Usuario
+end
+go
+
+CREATE procedure sp_ListarMesasSinAsignar
+as
+begin
+	SELECT m.IdMesa, m.NumeroMesa FROM Mesas m WHERE m.IdMesa NOT IN (SELECT ma.IdMesa FROM MesasAsignadas ma)
+end
+go
+
+create procedure spAsignarMesero(
+	@IdMesero int,
+	@IdMesa int
+)
+as
+begin
+	insert into MesasAsignadas (IdMesa,IdUsuario,fecha) values (@IdMesa,@IdMesero,getdate())
 end
 
 

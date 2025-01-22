@@ -26,9 +26,9 @@ VALUES
 ('mesero@ejemplo.com', 'password123', 2,'n','m'),
 ('admin@ejemplo.com', 'admin123', 1,'y','u');
 
-INSERT INTO Mesas (NumeroMesa,Estado)
-VALUES (1,0), (2,0), (3,0), (4,0), (5,0);
+INSERT INTO Mesas (NumeroMesa)
+VALUES (1), (2), (3), (4), (5);
 
-insert into MeseroxMesa (IdMesa,IdUsuario,Fecha)
+insert into MesasAsignadas (IdMesa,IdUsuario,Fecha)
 values
 (1,1,getdate()),(2,1,getdate())

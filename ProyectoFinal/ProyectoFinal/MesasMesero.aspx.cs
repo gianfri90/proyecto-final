@@ -18,8 +18,8 @@ namespace ProyectoFinal
             m = false;
 			try
 			{
-                MeseroXmesaManager meseromesaManager = new MeseroXmesaManager();
-                DgvMesa.DataSource = meseromesaManager.ListarMesas();
+                MesasAsignadasManager meseromesaManager = new MesasAsignadasManager();
+                DgvMesa.DataSource = meseromesaManager.ListarMesaAsignada();
 				DgvMesa.DataBind();
 			}
 			catch (Exception ex)

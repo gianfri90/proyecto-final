@@ -40,5 +40,32 @@ namespace Manager
             }
             return mesas;
         }
+        public List<Mesa> ListarMesasSinAsignar()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Mesa> ListaMesas = new List<Mesa>();
+            try
+            {
+                datos.setearProcedimiento("sp_ListarMesasSinAsignar");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Mesa aux = new Mesa();
+                    aux.IdMesa = (int)datos.Lector["IdMesa"];
+                    aux.NumeroMesa = (int)datos.Lector["NumeroMesa"];
+                    ListaMesas.Add(aux);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return ListaMesas;
+        }
     }
 }

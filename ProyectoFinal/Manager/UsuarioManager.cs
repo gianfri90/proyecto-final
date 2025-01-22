@@ -90,5 +90,33 @@ namespace Manager
             }
             return false;
         }
+
+        public List<Usuario> ListarUsuario()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Usuario> aux = new List<Usuario>();
+            try
+            {
+                datos.setearProcedimiento("sp_listarUsuario");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Usuario usuarios = new Usuario();
+                    usuarios.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    usuarios.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Add(usuarios);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return aux;
+        }
     }
 }
