@@ -20,12 +20,17 @@ namespace Manager
                 while (datos.Lector.Read())
                 {
                     MesasAsignadas meseroMesa = new MesasAsignadas();
-                    meseroMesa.Fecha = (DateTime)datos.Lector["fecha"];
+                    if (!(datos.Lector["fecha"] is DBNull))
+                        meseroMesa.Fecha = (DateTime)datos.Lector["fecha"];
                     meseroMesa.mesa = new Mesa();
                     meseroMesa.mesa.NumeroMesa = (int)datos.Lector["NumeroMesa"];
                     meseroMesa.usuario = new Usuario();
-                    meseroMesa.usuario.Nombre = (string)datos.Lector["Nombre"];
-                    meseroMesa.usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        meseroMesa.usuario.Nombre = (string)datos.Lector["Nombre"];
+                    else
+                        meseroMesa.usuario.Nombre = "No Asignado";
+                    if (!(datos.Lector["IdUsuario"] is DBNull))
+                        meseroMesa.usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
                     aux.Add(meseroMesa);
                 }
             }

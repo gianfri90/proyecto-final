@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsignarMesa.aspx" />
-    <Content Include="MesasMesero.aspx" />
+    <Content Include="AsignacionMesas.aspx" />
     <Content Include="DetaslleMesa.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
@@ -86,12 +86,12 @@
     <Compile Include="AsignarMesa.aspx.designer.cs">
       <DependentUpon>AsignarMesa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MesasMesero.aspx.cs">
-      <DependentUpon>MesasMesero.aspx</DependentUpon>
+    <Compile Include="AsignacionMesas.aspx.cs">
+      <DependentUpon>AsignacionMesas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MesasMesero.aspx.designer.cs">
-      <DependentUpon>MesasMesero.aspx</DependentUpon>
+    <Compile Include="AsignacionMesas.aspx.designer.cs">
+      <DependentUpon>AsignacionMesas.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetaslleMesa.aspx.cs">
       <DependentUpon>DetaslleMesa.aspx</DependentUpon>

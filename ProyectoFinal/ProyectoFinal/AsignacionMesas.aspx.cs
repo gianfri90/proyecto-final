@@ -12,11 +12,11 @@ namespace ProyectoFinal
 {
     public partial class AsignarMesas : System.Web.UI.Page
     {
-        public bool m;
+        public bool Asignar;
         protected void Page_Load(object sender, EventArgs e)
         {
-            m = false;
-			try
+            Asignar = false;
+            try
 			{
                 MesasAsignadasManager meseromesaManager = new MesasAsignadasManager();
                 DgvMesa.DataSource = meseromesaManager.ListarMesaAsignada();
@@ -31,8 +31,6 @@ namespace ProyectoFinal
 
         protected void DgvMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m = true;
-            
         }
     }
 }
