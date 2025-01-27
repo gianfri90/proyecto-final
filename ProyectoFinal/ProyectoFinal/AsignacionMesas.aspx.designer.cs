@@ -15,12 +15,30 @@ namespace ProyectoFinal
     {
 
         /// <summary>
-        /// Control DgvMesa.
+        /// Control DgvMesaAsignadas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DgvMesa;
+        protected global::System.Web.UI.WebControls.GridView DgvMesaAsignadas;
+
+        /// <summary>
+        /// Control DdlMesero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DdlMesero;
+
+        /// <summary>
+        /// Control IdAcepar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button IdAcepar;
     }
 }

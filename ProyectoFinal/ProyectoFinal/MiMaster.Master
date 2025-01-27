@@ -22,10 +22,14 @@
                     <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
                         <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burguer house</span>
                         <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
-                            <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">IniciarSesion</a></li>
                             <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
                                 {%>
                                     <li class="nav-brand"><a class="nav-link active" href="/Registarse.aspx">Registrar</a></li>
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="AsignacionMesas.aspx">Asignar Mesas</a></li>
+                                    </ul>
 
                                <% }%>
                             <%if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == false)
@@ -33,13 +37,19 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="Default.aspx">Mesas</a></li>
+                                <li><a class="dropdown-item" href="Mesas.aspx">Mesas</a></li>
                             </ul>
                             <%} %>
                             <%if (Session["Usuario"] != null)
-                                { %>
+                                {
+
+%>
                                     <asp:Button ID="BtSalir" runat="server" CssClass="nav-link" Text="Salir" type="text" OnClick="BtSalir_Click" />
-                            <% } %>
+                            <%}
+                               else
+                                {%>
+                                     <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">IniciarSesion</a></li>
+                                <% } %>
                         </ul>
                     </div>
             </div>

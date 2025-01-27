@@ -9,23 +9,20 @@ namespace Manager
 {
     public class MesaManager
     {
-        public List<Mesa> listarMesa()
+        public List<Mesa> listarMesa(int IdUsuario)
         {
             List<Mesa> mesas = new List<Mesa>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearProcedimiento("sp_ListarMesa");
+                datos.setearParametros("@IdUsuario", IdUsuario);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Mesa aux = new Mesa();
                     aux.IdMesa = (int)datos.Lector["IdMesa"];
                     aux.NumeroMesa = (int)datos.Lector["NumeroMesa"];
-                    aux.Estado = (bool)datos.Lector["Estado"];
-                    aux.usuario = new Usuario();
-                    aux.usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
-                    aux.usuario.Nombre = (string)datos.Lector["Nombre"];
                     mesas.Add(aux);
                 }
             }

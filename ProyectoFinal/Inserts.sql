@@ -1,5 +1,5 @@
-use RESTO
-go
+USE RESTO
+GO
 
 INSERT INTO Platos (NombrePlato, PrecioPlato, stock)
 VALUES 
@@ -8,6 +8,7 @@ VALUES
 ('Ensalada César', 7.00, 25),
 ('Hamburguesa', 10.00, 30),
 ('Tacos', 5.00, 50);
+go
 
 INSERT INTO Bebidas (NombreBebida, Stock, Precio)
 VALUES 
@@ -16,19 +17,23 @@ VALUES
 ('Cerveza', 80, 2.50),
 ('Jugo de Naranja', 120, 2.00),
 ('Vino Tinto', 50, 10.00);
+go
 
 INSERT INTO TipoUsuario (Tipo)
 VALUES (1), (2);
+go
 
 INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
 VALUES 
 ('cliente@ejemplo.com', 'password123', 2,'Gianfri','Panta'),
 ('mesero@ejemplo.com', 'password123', 2,'n','m'),
 ('admin@ejemplo.com', 'admin123', 1,'y','u');
+go
 
 INSERT INTO Mesas (NumeroMesa)
-VALUES (1), (2), (3), (4), (5);
+VALUES (1), (2), (3), (4), (5), (10);
+go
 
 insert into MesasAsignadas (IdMesa,IdUsuario,Fecha)
 values
-(1,1,getdate()),(2,1,getdate())
+(1,1,getdate()),(2,1,getdate()),(3,2,'2025-01-23')

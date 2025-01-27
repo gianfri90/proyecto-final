@@ -24,6 +24,7 @@ namespace Manager
                         meseroMesa.Fecha = (DateTime)datos.Lector["fecha"];
                     meseroMesa.mesa = new Mesa();
                     meseroMesa.mesa.NumeroMesa = (int)datos.Lector["NumeroMesa"];
+                    meseroMesa.mesa.IdMesa = (int)datos.Lector["IdMesa"];
                     meseroMesa.usuario = new Usuario();
                     if (!(datos.Lector["Nombre"] is DBNull))
                         meseroMesa.usuario.Nombre = (string)datos.Lector["Nombre"];
@@ -53,14 +54,18 @@ namespace Manager
             try
             {
                 datos.setearProcedimiento("sp_AsignarMesero");
-                datos.setearParametros("@IdMesa",idMesa);
-                datos.setearParametros("@IdMesero",idMesero);
+                datos.setearParametros("@IdMesa", idMesa);
+                datos.setearParametros("@IdMesero", idMesero);
                 datos.ejecutarEscalar();
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 

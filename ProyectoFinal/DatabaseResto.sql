@@ -1,6 +1,7 @@
 create database RESTO
 GO
 USE RESTO
+go
 
 CREATE TABLE TipoUsuario(
 	IdTipoUsuario int PRIMARY KEY NOT NULL identity(1,1),
@@ -24,19 +25,12 @@ CREATE table Mesas(
 );
 go
 
-create table Platos(
+create table Menu(
 	IdPlato int primary key NOT NULL identity(1,1),	
-	NombrePlato varchar(50) not null,
-	PrecioPlato money not null,
-	stock int not null
-);
-go
-
-create table Bebidas(
-	IdBebida int primary KEY NOT null identity(1,1),
-	NombreBebida varchar(50) unique,
-	Stock int not null,
-	Precio money not null
+	Nombre varchar(50) not null,
+	Precio money not null,
+	stock int not null,
+	Imagen varchar(150)
 );
 go
 
@@ -77,43 +71,51 @@ BEGIN
 END
 GO 
 
-create or alter procedure sp_ListarMesa
-as
+create or alter procedure sp_ListarMesa(
+	@IdUsuario int
+)as
 begin
-	SELECT m.IdMesa as IdMesa , m.NumeroMesa as NumeroMesa from Mesas m
+	SELECT m.IdMesa as IdMesa , m.NumeroMesa, u.Nombre as NumeroMesa from Mesas m
+	inner join MesasAsignadas ma on ma.IdMesa = m.IdMesa
+	inner join Usuario u on u.IdUsuario = ma.IdUsuario
+	where u.IdUsuario = @IdUsuario and ma.Fecha = CAST(GETDATE() AS DATE)
 end
 GO 
 
 create or alter procedure sp_ListarMesasAsignadas
 as
 begin
-	SELECT  m.NumeroMesa as NumeroMesa,  Mm.IdUsuario as IdUsuario, u.Nombre as Nombre, Mm.Fecha as fecha from MesasAsignadas Mm
-	inner join Usuario u on Mm.IdUsuario = u.IdUsuario
-	inner join Mesas m on Mm.IdMesa = m.IdMesa
+	SELECT  m.NumeroMesa as NumeroMesa,  ma.IdUsuario as IdUsuario, u.Nombre as Nombre, ma.Fecha as fecha, m.IdMesa as IdMesa from Mesas m 
+	left join (select * from MesasAsignadas ma2 where ma2.Fecha = CAST(GETDATE() AS DATE)) ma on m.IdMesa  = ma.IdMesa 
+	left join Usuario u on u.IdUsuario = ma.IdUsuario
+	select * from MesasAsignadas ma
 end
 GO 
 
-create procedure sp_listarUsuario
+create or alter procedure sp_listarUsuario
 as
 begin
-	SELECT IdUsuario, Nombre from Usuario
+	SELECT IdUsuario, Nombre from Usuario WHERE IdTipoUsuario = 2
 end
 go
 
-CREATE procedure sp_ListarMesasSinAsignar
-as
-begin
-	SELECT m.IdMesa, m.NumeroMesa FROM Mesas m WHERE m.IdMesa NOT IN (SELECT ma.IdMesa FROM MesasAsignadas ma)
-end
-go
 
-create procedure spAsignarMesero(
-	@IdMesero int,
-	@IdMesa int
-)
-as
+create or alter procedure sp_AsignarMesero(
+	@IdMesa int,
+	@IdMesero int
+)as
 begin
-	insert into MesasAsignadas (IdMesa,IdUsuario,fecha) values (@IdMesa,@IdMesero,getdate())
+	IF NOT EXISTS (SELECT * FROM MesasAsignadas WHERE IdMesa = @IdMesa AND fecha = CAST(GETDATE() AS DATE))
+	BEGIN
+	    INSERT INTO MesasAsignadas (IdMesa, IdUsuario, Fecha)
+	    VALUES (@IdMesa, @IdMesero, GETDATE())
+	END
+	ELSE
+	BEGIN
+	    UPDATE MesasAsignadas
+	    SET IdUsuario = @IdMesero
+	    WHERE IdMesa = @IdMesa
+	END
 end
 
 

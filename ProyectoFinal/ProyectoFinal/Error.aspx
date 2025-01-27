@@ -5,4 +5,5 @@
     <h1>
         ERROR
     </h1>
+    <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
 </asp:Content>

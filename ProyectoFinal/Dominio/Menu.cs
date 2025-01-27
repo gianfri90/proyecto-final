@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Bebida
+    public class Menu
     {
-        public int IdBebida { get; set; }
-        public string NombreBebida { get; set; }
-        public int stock { get; set; }
+        public int IdPlato { get; set; }
+        public string Nombre { get; set; }
         public decimal Precio { get; set; }
+        public int Stock { get; set; }
+        public string Imagen {  get; set; }
     }
 }
