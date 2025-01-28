@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuManager.cs" />
     <Compile Include="MesaManager.cs" />
     <Compile Include="MesasAsignadasManager.cs" />
     <Compile Include="UsuarioManager.cs" />

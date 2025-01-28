@@ -117,6 +117,13 @@ begin
 	    WHERE IdMesa = @IdMesa
 	END
 end
+GO 
+
+create or alter procedure sp_ListarMenu
+AS
+BEGIN 
+	select IdPlato, Nombre, Precio, Stock, Imagen from Menu
+END
 
 
 

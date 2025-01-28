@@ -1,7 +1,7 @@
 USE RESTO
 GO
 
-INSERT INTO Platos (NombrePlato, PrecioPlato, stock)
+INSERT INTO Menu (Nombre, Precio, stock)
 VALUES 
 ('Pizza Margherita', 8.99, 20),
 ('Spaghetti Bolognese', 12.50, 15),
@@ -10,14 +10,6 @@ VALUES
 ('Tacos', 5.00, 50);
 go
 
-INSERT INTO Bebidas (NombreBebida, Stock, Precio)
-VALUES 
-('Coca Cola', 100, 1.50),
-('Agua Mineral', 150, 1.00),
-('Cerveza', 80, 2.50),
-('Jugo de Naranja', 120, 2.00),
-('Vino Tinto', 50, 10.00);
-go
 
 INSERT INTO TipoUsuario (Tipo)
 VALUES (1), (2);

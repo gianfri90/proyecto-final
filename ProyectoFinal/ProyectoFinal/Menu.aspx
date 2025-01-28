@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-    <asp:Repeater ID="RepPlatos" runat="server">
+    <asp:Repeater ID="RepMenu" runat="server" OnItemDataBound="RepMenu_ItemDataBound">
         <ItemTemplate>
             <div class="col-md-3 m-4">
                 <div class="card  border-dark h-100" style="max-width: 20rem;">
@@ -11,7 +11,6 @@
 
                     <div class="card-body">
                         <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                        <p class="card-text"><%# Eval("Coleccion") %></p>
                         <h4 class="card-title" style="color: blue; text-align: right;">$<%# Eval("Precio", "{0:F2}") %></h4>
                         <a href="Detalle.aspx?id=<%# Eval("IdPlato") %>" class="btn btn-primary">Ver Detalle</a>
                     </div>
