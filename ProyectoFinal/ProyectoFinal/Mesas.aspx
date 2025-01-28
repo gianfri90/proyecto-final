@@ -7,6 +7,7 @@
             <div class="m-3">
                 <asp:GridView CssClass="table table-light" ID="DgvMesa" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="DgvMesa_SelectedIndexChanged">
                     <Columns>
+                        <asp:BoundField HeaderText="IdMesa" DataField="IdMesa" />
                         <asp:BoundField HeaderText="Mesa" DataField="NumeroMesa" />
                         <asp:CommandField ShowSelectButton="true" SelectText="&#x270d" HeaderText="Detalle Mesa" />
                     </Columns>

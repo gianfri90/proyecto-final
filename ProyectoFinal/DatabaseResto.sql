@@ -30,7 +30,7 @@ create table Menu(
 	Nombre varchar(50) not null,
 	Precio money not null,
 	stock int not null,
-	Imagen varchar(150)
+	Imagen varchar(300)
 );
 go
 

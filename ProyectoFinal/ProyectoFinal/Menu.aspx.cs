@@ -20,6 +20,9 @@ namespace ProyectoFinal
 
         protected void RepMenu_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            Dominio.Menu menu = (Dominio.Menu)e.Item.DataItem;
+            Image imgMenu = (Image)e.Item.FindControl("imgMenu");
+            imgMenu.ImageUrl = menu.Imagen;
         }
     }
 }

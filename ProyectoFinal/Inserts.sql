@@ -1,13 +1,13 @@
 USE RESTO
 GO
 
-INSERT INTO Menu (Nombre, Precio, stock)
+INSERT INTO Menu (Nombre, Precio, stock,imagen)
 VALUES 
-('Pizza Margherita', 8.99, 20),
-('Spaghetti Bolognese', 12.50, 15),
-('Ensalada César', 7.00, 25),
-('Hamburguesa', 10.00, 30),
-('Tacos', 5.00, 50);
+('Pizza Margherita', 8.99, 20,'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/f33d5e96-f960-486f-94ac-cbabe3074ead/Derivates/0454bd7c-c1e3-4010-9a74-39aa130417ba.jpg'),
+('Spaghetti Bolognese', 12.50, 15,null),
+('Ensalada César', 7.00, 25,'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/f33d5e96-f960-486f-94ac-cbabe3074ead/Derivates/0454bd7c-c1e3-4010-9a74-39aa130417ba.jpg'),
+('Hamburguesa', 10.00, 30,null),
+('Tacos', 5.00, 50,null);
 go
 
 

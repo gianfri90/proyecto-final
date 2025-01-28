@@ -36,6 +36,7 @@ namespace ProyectoFinal
         {
             GridViewRow row = DgvMesa.SelectedRow;
             int IdMesa = int.Parse(row.Cells[0].Text);
+            Response.Redirect("Menu.aspx/IdMesa=" + IdMesa, false);
         }
     }
 }

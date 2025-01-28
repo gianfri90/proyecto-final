@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using static System.Net.WebRequestMethods;
 
 namespace Manager
 {
@@ -24,7 +25,10 @@ namespace Manager
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.Stock = (int)datos.Lector["Stock"];
-                    //aux.Imagen = (string)datos.Lector["Imagen"];
+                    if (!(datos.Lector["Imagen"] is DBNull))
+                        aux.Imagen = (string)datos.Lector["Imagen"];
+                    else
+                        aux.Imagen = "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=";
                     menu.Add(aux);
                 }
             }
