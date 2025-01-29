@@ -29,3 +29,4 @@ go
 insert into MesasAsignadas (IdMesa,IdUsuario,Fecha)
 values
 (1,1,getdate()),(2,1,getdate()),(3,2,'2025-01-23')
+

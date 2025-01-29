@@ -42,6 +42,13 @@ create table MesasAsignadas(
 )
 go
 
+create table DetalleMesa(
+	IdDetalle int primary key identity(1,1),
+	IdPlato int foreign key references Menu(IdPlato),
+	IdMesa int foreign key references Mesas(IdMesa),
+)
+go
+
 create procedure sp_IniciarSesion(
 	@Email varchar(250), 
 	@Contraseña varchar(50)
