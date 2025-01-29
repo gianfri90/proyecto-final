@@ -62,13 +62,14 @@ namespace ProyectoFinal
                 }
                 else
                 {
+                    Session.Add("error", "Los datos ya existen");
                     Response.Redirect("error.aspx", false);
                 }
             }
             else
             {
                 Session.Add("error", "el usuario ya existe");
-                Response.Redirect("IniciarSesion.aspx", false);
+                Response.Redirect("error.aspx", false);
             }
         }
     }

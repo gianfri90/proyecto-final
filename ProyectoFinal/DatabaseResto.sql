@@ -70,13 +70,13 @@ BEGIN
 END
 go
 
-create procedure sp_BuscarUsuario(
+create or alter procedure sp_BuscarUsuario(
 	@Email varchar(250)
 )AS 
 BEGIN 
 	select u.IdUsuario from Usuario u where u.Email = @Email
 END
-GO 
+GO
 
 create or alter procedure sp_ListarMesa(
 	@IdUsuario int
@@ -131,6 +131,14 @@ AS
 BEGIN 
 	select IdPlato, Nombre, Precio, Stock, Imagen from Menu
 END
+go
 
+create or alter procedure sp_ExisteMesaAsignada(
+	@IdMesa int
+)as
+begin
+	select IdMesa from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE) and IdMesa = @IdMesa
+end
 
+SELECT * from Usuarios
 

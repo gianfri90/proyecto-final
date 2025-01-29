@@ -69,5 +69,35 @@ namespace Manager
             }
         }
 
+        public bool BuscarMesaAsignada(int IdMesa)
+        {
+            MesasAsignadas mesasAsignadas = new MesasAsignadas();
+            AccesoDatos datos = new AccesoDatos();
+            int id = 0;
+            try
+            {
+                datos.setearProcedimiento("sp_ExisteMesaAsignada");
+                datos.setearParametros("@IdMesa", IdMesa);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    id = (int)datos.Lector["IdMesa"];
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            if(id > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
