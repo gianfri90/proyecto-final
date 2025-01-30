@@ -13,9 +13,12 @@ namespace ProyectoFinal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MenuManager menuManager = new MenuManager();
-            RepMenu.DataSource = menuManager.listarMenu();
-            RepMenu.DataBind();
+            if (!IsPostBack)
+            {
+                MenuManager menuManager = new MenuManager();
+                RepMenu.DataSource = menuManager.listarMenu();
+                RepMenu.DataBind();
+            }
         }
 
         protected void RepMenu_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -23,6 +26,15 @@ namespace ProyectoFinal
             Dominio.Menu menu = (Dominio.Menu)e.Item.DataItem;
             Image imgMenu = (Image)e.Item.FindControl("imgMenu");
             imgMenu.ImageUrl = menu.Imagen;
+        }
+        protected void BtnAgregar_Click1(object sender, EventArgs e)
+        {
+            DetalleMesaManager detalleManager = new DetalleMesaManager();
+            Button btn = (Button)sender;
+            int IdMesa = int.Parse(Request.QueryString["IdMesa"]);
+            int idPlato = int.Parse(btn.CommandArgument.ToString());
+            detalleManager.AgregarProducto(idPlato,IdMesa);
+            Response.Redirect("default.aspx");
         }
     }
 }

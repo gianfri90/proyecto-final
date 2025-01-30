@@ -129,7 +129,7 @@ GO
 create or alter procedure sp_ListarMenu
 AS
 BEGIN 
-	select IdPlato, Nombre, Precio, Stock, Imagen from Menu
+	select IdPlato, Nombre, Precio, Stock, Imagen from Menu where Stock > 0
 END
 go
 
@@ -139,6 +139,12 @@ create or alter procedure sp_ExisteMesaAsignada(
 begin
 	select IdMesa from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE) and IdMesa = @IdMesa
 end
+go
 
-SELECT * from Usuarios
-
+create or alter procedure sp_AsignarPlato(
+	@IdPlato int,
+	@IdMesa int
+)as
+begin
+	insert into DetalleMesa (IdPlato,IdMesa) values (@IdPlato,@IdMesa)
+end

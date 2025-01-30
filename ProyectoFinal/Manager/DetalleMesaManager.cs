@@ -41,5 +41,18 @@ namespace Manager
             }
             return ListaDetalle;
         }
+        public void AgregarProducto(int IdPlato,int IdMesa)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_AsignarPlato");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -18,6 +18,11 @@ namespace ProyectoFinal
             {
                 if (!IsPostBack)
                 {
+                    if (Session["Usuario"] == null)
+                    {
+                        Session.Add("error", "Debes iniciar sesion");
+                        Response.Redirect("Error.aspx");
+                    }
                     MesasAsignadasManager mesasAsignadasmanager = new MesasAsignadasManager();
                     string IdQuery = Request.QueryString["IdMesa"];
                     if(!string.IsNullOrEmpty(IdQuery) && int.TryParse(IdQuery,out IdMesa))
@@ -39,6 +44,12 @@ namespace ProyectoFinal
 
                 throw ex;
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string IdQuery = Request.QueryString["IdMesa"];
+            Response.Redirect("Menu.aspx?IdMesa="+ IdQuery, false);
         }
     }
 }
