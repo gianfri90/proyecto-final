@@ -33,8 +33,7 @@ namespace ProyectoFinal
                             Response.Redirect("error.aspx", false);
                         }
                         DetalleMesaManager detalleMesa = new DetalleMesaManager();
-                        List<DetalleMesa> detalle = new List<DetalleMesa>();
-                        detalle = detalleMesa.ListarDetalle(IdMesa);
+                        List<Dominio.DetalleMesa> detalle = detalleMesa.ListarDetalle(IdMesa);
                         cargarTotalCompra(detalle);
                         DgvCarrito.DataSource = detalleMesa.ListarDetalle(IdMesa);
                         DgvCarrito.DataBind();
@@ -55,22 +54,16 @@ namespace ProyectoFinal
             Response.Redirect("Menu.aspx?IdMesa="+ IdQuery, false);
         }
 
-        private void cargarTotalCompra(List<DetalleMesa> Detalle)
+        private void cargarTotalCompra(List<Dominio.DetalleMesa> Detalle)
         {
-            Detalle.Sum(a => a.);
-            /*
             if (Detalle != null && Detalle.Any())
             {
-
-                lblTotal.Text = $"${calculoTotal:N2}";
-                rptResumenCarrito.DataSource = articulosCarrito;
-                rptResumenCarrito.DataBind();
+                lblTotal.Text = $"${Detalle.Sum(a => a.menu.Precio):N2}";
             }
             else
             {
                 lblTotal.Text = "$0.00";
             }
-            */
         }
     }
 }
