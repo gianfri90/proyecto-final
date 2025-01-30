@@ -47,11 +47,18 @@ namespace Manager
             try
             {
                 datos.setearProcedimiento("sp_AsignarPlato");
+                datos.setearParametros("@IdMesa", IdMesa);
+                datos.setearParametros("@IdPlato", IdPlato);
+                datos.ejecutarEscalar();
             }
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
+            }
+            finally 
+            { 
+                datos.cerrarConexion(); 
             }
         }
     }

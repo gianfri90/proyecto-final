@@ -34,7 +34,7 @@ namespace ProyectoFinal
             int IdMesa = int.Parse(Request.QueryString["IdMesa"]);
             int idPlato = int.Parse(btn.CommandArgument.ToString());
             detalleManager.AgregarProducto(idPlato,IdMesa);
-            Response.Redirect("default.aspx");
+            Response.Redirect("DetalleMesa.aspx?IdMesa="+IdMesa);
         }
     }
 }

@@ -147,4 +147,9 @@ create or alter procedure sp_AsignarPlato(
 )as
 begin
 	insert into DetalleMesa (IdPlato,IdMesa) values (@IdPlato,@IdMesa)
+	update Menu
+	set stock = stock - 1
+	where IdPlato = @IdPlato
 end
+
+select * from Menu
