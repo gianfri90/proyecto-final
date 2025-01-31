@@ -2,8 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container mt-5">
-        <div class="row">
+    <%if (FacturaAbierta)
+        {%>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
             <div class="d-flex w-100 align-items-center">
                 <div class="mt-3">
                     <asp:GridView ID="DgvCarrito" runat="server" CssClass="table table-light">
@@ -23,9 +25,19 @@
                                 <asp:Label ID="lblTotal" runat="server"></asp:Label>
                             </div>
                         </div>
+                        <asp:Button ID="IdCerrarFactura" runat="server" Text="Cerrar Factura" CssClass="btn btn-primary" onclick="IdCerrarFactura_Click"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <%}
+      else
+      { %>
+        <div class="row justify-content-center mt-3">
+                <div class ="col-md-3">
+                    <asp:Button ID="IdAbrirMesa" runat="server" Text="Abrir Mesa" CssClass="btn btn-primary" onclick="IdAbrirMesa_Click"/>
+                </div>
+        </div>
+    <% } %>
 </asp:Content>

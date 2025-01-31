@@ -123,7 +123,6 @@ begin
 	BEGIN
 	    INSERT INTO MesasAsignadas (IdMesa, IdUsuario, Fecha)
 	    VALUES (@IdMesa, @IdMesero, GETDATE())
-	    insert into factura (IdMesa) values (@IdMesa)
 	END
 	ELSE
 	BEGIN
@@ -172,5 +171,32 @@ begin
 	set stock = stock - 1
 	where IdPlato = @IdPlato
 end
+go
 
-select * from Menu
+create or alter procedure sp_BuscarFactura(
+	@IdMesa int
+)as
+begin
+	select IdFactura FROM factura f where f.Estado = 'ABIERTA' and f.IdMesa  = @IdMesa
+end
+go
+
+create or alter procedure sp_AgregarFactura(
+	@IdMesa int
+)AS 
+BEGIN 
+	insert into factura (IdFactura)
+	values(@IdMesa)
+END
+go
+
+CREATE or alter PROCEDURE sp_CerrarFactura(
+	@IdMesa int
+)AS 
+BEGIN 
+	UPDATE factura 
+	set Estado = 'CERRADO'
+	where IdMesa = @IdMesa
+END
+
+

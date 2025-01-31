@@ -27,3 +27,4 @@ VALUES (1), (2), (3), (4), (5), (10);
 go
 
 select * from factura
+select * from DetalleMesa dm 

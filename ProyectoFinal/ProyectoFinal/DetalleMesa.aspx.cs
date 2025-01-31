@@ -12,6 +12,7 @@ namespace ProyectoFinal
     public partial class DetalleMesa : System.Web.UI.Page
     {
         protected int IdMesa;
+        protected bool FacturaAbierta;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -32,6 +33,8 @@ namespace ProyectoFinal
                             Session.Add("error", "La mesa no pertenece al mesero");
                             Response.Redirect("error.aspx", false);
                         }
+                        FacturaManager factura = new FacturaManager();
+                        FacturaAbierta = factura.BuscarFactura(IdMesa);
                         DetalleMesaManager detalleMesa = new DetalleMesaManager();
                         List<Dominio.DetalleMesa> detalle = detalleMesa.ListarDetalle(IdMesa);
                         cargarTotalCompra(detalle);
@@ -64,6 +67,17 @@ namespace ProyectoFinal
             {
                 lblTotal.Text = "$0.00";
             }
+        }
+        protected void IdCerrarFactura_Click(object sender, EventArgs e)
+        {
+            FacturaManager factura = new FacturaManager();
+            int IdQuery = int.Parse(Request.QueryString["IdMesa"]);
+            factura.agregarFactura(IdQuery);
+        }
+
+        protected void IdAbrirMesa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
