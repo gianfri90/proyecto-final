@@ -10,6 +10,6 @@ namespace Dominio
     {
         public int IdDetalle {  get; set; }
         public Mesa mesa {  get; set; }
-        public Menu menu {  get; set; }
+        public Factura factura { get; set; }
     }
 }

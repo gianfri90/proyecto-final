@@ -42,10 +42,17 @@ create table MesasAsignadas(
 )
 go
 
-create table DetalleMesa(
-	IdDetalle int primary key identity(1,1),
-	IdPlato int foreign key references Menu(IdPlato),
+create table factura(
+	IdFactura int primary key not null identity(1,1),
 	IdMesa int foreign key references Mesas(IdMesa),
+	Estado varchar(50) not null default('ABIERTA')
+)
+go
+
+create table DetalleMesa(
+	IdDetalle int primary key not null identity(1,1),
+	IdPlato int foreign key references Menu(IdPlato),
+	IdFactura int foreign key references factura(IdFactura)
 )
 go
 
@@ -116,6 +123,7 @@ begin
 	BEGIN
 	    INSERT INTO MesasAsignadas (IdMesa, IdUsuario, Fecha)
 	    VALUES (@IdMesa, @IdMesero, GETDATE())
+	    insert into factura (IdMesa) values (@IdMesa)
 	END
 	ELSE
 	BEGIN
@@ -141,12 +149,25 @@ begin
 end
 go
 
+create or alter procedure sp_ListarDetalle(
+	@IdMesa int
+)AS 
+BEGIN 
+	select dm.IdDetalle as IdDetalle, m.Nombre as Nombre, m.Precio as Precio, f.IdMesa as IdMesa from DetalleMesa dm
+	inner join factura f on f.IdFactura = dm.IdFactura 
+	inner join Menu m on m.IdPlato = dm.IdPlato 
+	where f.IdMesa = @IdMesa
+END
+go
+
 create or alter procedure sp_AsignarPlato(
 	@IdPlato int,
 	@IdMesa int
 )as
 begin
-	insert into DetalleMesa (IdPlato,IdMesa) values (@IdPlato,@IdMesa)
+	DECLARE @IdFactura int
+	select @IdFactura = IdFactura from factura f where @IdMesa = IdMesa and f.Estado = 'ABIERTA'
+	insert into DetalleMesa (IdPlato,IdFactura) values (@IdPlato,@IdFactura)
 	update Menu
 	set stock = stock - 1
 	where IdPlato = @IdPlato

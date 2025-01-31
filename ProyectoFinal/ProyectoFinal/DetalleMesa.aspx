@@ -8,8 +8,8 @@
                 <div class="mt-3">
                     <asp:GridView ID="DgvCarrito" runat="server" CssClass="table table-light">
                         <Columns>
-                            <asp:BoundField HeaderText="Nombre Producto" DataField="menu.Nombre"></asp:BoundField>
-                            <asp:BoundField HeaderText="Precio" DataField="menu.Precio"></asp:BoundField>
+                            <asp:BoundField HeaderText="Nombre Producto" DataField="factura.Menu.Nombre"></asp:BoundField>
+                            <asp:BoundField HeaderText="Precio" DataField="factura.Menu.Precio"></asp:BoundField>
                         </Columns>
                     </asp:GridView>
                     <asp:Button ID="BtAgregar" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="Button1_Click" />

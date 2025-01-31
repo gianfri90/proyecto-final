@@ -58,7 +58,7 @@ namespace ProyectoFinal
         {
             if (Detalle != null && Detalle.Any())
             {
-                lblTotal.Text = $"${Detalle.Sum(a => a.menu.Precio):N2}";
+                lblTotal.Text = $"${Detalle.Sum(a => a.factura.Menu.Precio):N2}";
             }
             else
             {
