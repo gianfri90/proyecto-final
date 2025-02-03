@@ -14,20 +14,45 @@ namespace Manager
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("spAbrirFactura");
-                datos.setearParametros("@IdMesa",IdMesa);
+                datos.setearProcedimiento("sp_AgregarFactura");
+                datos.setearParametros("@IdMesa", IdMesa);
+                datos.ejecutarEscalar();
             }
             catch (Exception)
             {
 
                 throw;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
 
         }
-        public bool BuscarFactura(int IdMesa)
+
+        public void CerrarFactura(int IdMesa)
         {
             AccesoDatos datos = new AccesoDatos();
-            Factura factura = new Factura();
+            try
+            {
+                datos.setearProcedimiento("sp_CerrarFactura");
+                datos.setearParametros("@IdMesa", IdMesa);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public int BuscarFactura(int IdMesa)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int IdFactura = 0;
             try
             {
                 datos.setearProcedimiento("sp_BuscarFactura");
@@ -35,7 +60,7 @@ namespace Manager
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    factura.IdFactura = (int)datos.Lector["IdFactura"];
+                    IdFactura = (int)datos.Lector["IdFactura"];
                 }
             }
             catch (Exception)
@@ -47,11 +72,11 @@ namespace Manager
             {
                 datos.cerrarConexion();
             }
-            if(factura.IdFactura > 0)
+            if(IdFactura > 0)
             {
-                return true;
+                return IdFactura;
             }
-            return false;
+            return IdFactura;
         }
     }
 }

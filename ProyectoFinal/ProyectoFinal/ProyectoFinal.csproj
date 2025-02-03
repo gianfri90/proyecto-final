@@ -67,18 +67,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarInsumo.aspx" />
     <Content Include="AsignacionMesas.aspx" />
     <Content Include="DetalleMesa.aspx" />
+    <Content Include="EliminarInsumo.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Mesas.aspx" />
+    <Content Include="ModificarInsumo.aspx" />
     <Content Include="Registarse.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarInsumo.aspx.cs">
+      <DependentUpon>AgregarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarInsumo.aspx.designer.cs">
+      <DependentUpon>AgregarInsumo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AsignacionMesas.aspx.cs">
       <DependentUpon>AsignacionMesas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -92,6 +102,13 @@
     </Compile>
     <Compile Include="DetalleMesa.aspx.designer.cs">
       <DependentUpon>DetalleMesa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarInsumo.aspx.cs">
+      <DependentUpon>EliminarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarInsumo.aspx.designer.cs">
+      <DependentUpon>EliminarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
@@ -130,6 +147,13 @@
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarInsumo.aspx.cs">
+      <DependentUpon>ModificarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarInsumo.aspx.designer.cs">
+      <DependentUpon>ModificarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">

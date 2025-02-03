@@ -36,7 +36,7 @@
       { %>
         <div class="row justify-content-center mt-3">
                 <div class ="col-md-3">
-                    <asp:Button ID="IdAbrirMesa" runat="server" Text="Abrir Mesa" CssClass="btn btn-primary" onclick="IdAbrirMesa_Click"/>
+                    <asp:Button ID="IdAbrirMesa" runat="server" Text="Abrir Mesa" CssClass="btn btn-primary" onclick="IdAbrirMesa_Click1"/>
                 </div>
         </div>
     <% } %>

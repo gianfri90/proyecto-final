@@ -17,7 +17,7 @@
                 <%if (Asignar)
                     {%>
                 <asp:DropDownList ID="DdlMesero" runat="server"></asp:DropDownList>
-                <asp:Button ID="IdAcepar" runat="server" Text="Aceptar" OnClick="IdAcepar_Click" />
+                <asp:Button ID="IdAcepar" runat="server" Text="Aceptar" OnClick="IdAcepar_Click" CssClass="btn btn-primary" />
                 <%}%>
             </div>
         </div>

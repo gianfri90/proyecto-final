@@ -25,10 +25,19 @@
                             <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
                                 {%>
                                     <li class="nav-brand"><a class="nav-link active" href="/Registarse.aspx">Registrar</a></li>
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
+                                    <a class ="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insumos
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="">Nuevo Insumo</a></li>
+                                        <li><a class="dropdown-item" href="">Elimianr Insumo</a></li>
+                                        <li><a class="dropdown-item" href="">Aumenta Insumo</a></li>
+                                    </ul>
+                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="AsignacionMesas.aspx">Asignar Mesas</a></li>
+                                        <li><a class="dropdown-item" href="">Pedidos Por Mesa</a></li>
+                                        <li><a class="dropdown-item" href="">Pedidos Por Mesero</a></li>
                                     </ul>
 
                                <% }%>

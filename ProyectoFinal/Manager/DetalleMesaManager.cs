@@ -9,7 +9,7 @@ namespace Manager
 {
     public class DetalleMesaManager
     {
-        public List<DetalleMesa> ListarDetalle(int IdMesa)
+        public List<DetalleMesa> ListarDetalle(int IdMesa,int IdFactura)
         {
             List<DetalleMesa> ListaDetalle = new List<DetalleMesa>();
             AccesoDatos datos = new AccesoDatos();
@@ -17,6 +17,7 @@ namespace Manager
             {
                 datos.setearProcedimiento("sp_ListarDetalle");
                 datos.setearParametros("@IdMesa", IdMesa);
+                datos.setearParametros("@IdFactura", IdFactura);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

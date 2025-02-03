@@ -13,6 +13,7 @@ namespace ProyectoFinal
     {
         protected int IdMesa;
         protected bool FacturaAbierta;
+        private List<Dominio.DetalleMesa> Detalle;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -33,12 +34,13 @@ namespace ProyectoFinal
                             Session.Add("error", "La mesa no pertenece al mesero");
                             Response.Redirect("error.aspx", false);
                         }
-                        FacturaManager factura = new FacturaManager();
-                        FacturaAbierta = factura.BuscarFactura(IdMesa);
                         DetalleMesaManager detalleMesa = new DetalleMesaManager();
-                        List<Dominio.DetalleMesa> detalle = detalleMesa.ListarDetalle(IdMesa);
-                        cargarTotalCompra(detalle);
-                        DgvCarrito.DataSource = detalleMesa.ListarDetalle(IdMesa);
+                        FacturaManager factura = new FacturaManager();
+                        int IdFactura = factura.BuscarFactura(IdMesa);
+                        FacturaAbierta = IdFactura != 0 ? true : false;
+                        Detalle = detalleMesa.ListarDetalle(IdMesa,IdFactura);
+                        cargarTotalCompra();
+                        DgvCarrito.DataSource = Detalle;
                         DgvCarrito.DataBind();
                     }
                 }
@@ -57,7 +59,7 @@ namespace ProyectoFinal
             Response.Redirect("Menu.aspx?IdMesa="+ IdQuery, false);
         }
 
-        private void cargarTotalCompra(List<Dominio.DetalleMesa> Detalle)
+        private void cargarTotalCompra()
         {
             if (Detalle != null && Detalle.Any())
             {
@@ -72,12 +74,16 @@ namespace ProyectoFinal
         {
             FacturaManager factura = new FacturaManager();
             int IdQuery = int.Parse(Request.QueryString["IdMesa"]);
-            factura.agregarFactura(IdQuery);
+            factura.CerrarFactura(IdQuery);
+            Response.Redirect("DetalleMesa.aspx?IdMesa="+IdQuery, false);
         }
 
-        protected void IdAbrirMesa_Click(object sender, EventArgs e)
+        protected void IdAbrirMesa_Click1(object sender, EventArgs e)
         {
-
+            FacturaManager factura = new FacturaManager();
+            int IdQuery = int.Parse(Request.QueryString["IdMesa"]);
+            factura.agregarFactura(IdQuery);
+            Response.Redirect("DetalleMesa.aspx?IdMesa=" + IdQuery, false);
         }
     }
 }
