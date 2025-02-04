@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using System.Web.UI.WebControls.WebParts;
+using System;
 
 namespace ProyectoFinal
 {
