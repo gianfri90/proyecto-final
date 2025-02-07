@@ -105,31 +105,22 @@ namespace ProyectoFinal
         protected global::System.Web.UI.WebControls.RangeValidator rvPrecio;
 
         /// <summary>
-        /// Control lblUrlImagen.
+        /// Control LbUrlImagen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUrlImagen;
+        protected global::System.Web.UI.WebControls.Label LbUrlImagen;
 
         /// <summary>
-        /// Control txtUrlImagen.
+        /// Control TbImagen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUrlImagen;
-
-        /// <summary>
-        /// Control btnAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        protected global::System.Web.UI.WebControls.TextBox TbImagen;
 
         /// <summary>
         /// Control imgArticulo.

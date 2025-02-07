@@ -43,5 +43,24 @@ namespace Manager
             }
             return menu;
         }
+
+        public void agregarInsumo(Menu menu)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_AgregarInsumo");
+                datos.setearParametros("@Stock", menu.Stock);
+                datos.setearParametros("@Precio", menu.Precio);
+                datos.setearParametros("@Nombre", menu.Nombre);
+                datos.setearParametros("@Imagen", menu.Imagen);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -28,9 +28,9 @@
                                     <a class ="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insumos
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="">Nuevo Insumo</a></li>
+                                        <li><a class="dropdown-item" href="/AgregarInsumo.aspx">Nuevo Insumo</a></li>
                                         <li><a class="dropdown-item" href="">Elimianr Insumo</a></li>
-                                        <li><a class="dropdown-item" href="">Aumenta Insumo</a></li>
+                                        <li><a class="dropdown-item" href="">Modificar Insumo</a></li>
                                     </ul>
                                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
                                     </a>

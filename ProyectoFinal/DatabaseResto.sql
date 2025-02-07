@@ -27,10 +27,11 @@ go
 
 create table Menu(
 	IdPlato int primary key NOT NULL identity(1,1),	
-	Nombre varchar(50) not null,
+	Nombre varchar(50) not null unique,
 	Precio money not null,
 	stock int not null,
-	Imagen varchar(300)
+	Imagen varchar(300),
+	estado bit not null
 );
 go
 
@@ -200,5 +201,20 @@ BEGIN
 	set Estado = 'CERRADO'
 	where IdMesa = @IdMesa
 END
+go
+
+create or alter procedure sp_AgregarInsumo(
+	@Precio int,
+	@Stock int,
+	@Nombre varchar(150),
+	@Imagen varchar(250)
+)as
+begin
+	INSERT INTO Menu (Nombre, Precio, stock,imagen)
+	VALUES (@Nombre,@Precio,@Stock,@Imagen)
+end
+
+
+
 
 

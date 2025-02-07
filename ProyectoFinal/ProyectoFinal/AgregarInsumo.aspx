@@ -9,7 +9,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class ="row">
+    <div class="row">
         <div class="col-3">
             <div class="m-3">
                 <asp:Label ID="LbNombreInsumo" runat="server" Text="Nombre Insumo"></asp:Label>
@@ -33,13 +33,10 @@
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
                         <div class="m-3">
-                            <asp:Label ID="lblUrlImagen" runat="server" CssClass="form-label" Text="Url Imagen: "></asp:Label>
+                            <asp:Label ID="LbUrlImagen" runat="server" CssClass="form-label" Text="Url Imagen: "></asp:Label>
                             <div class="row">
                                 <div class="col-10">
-                                    <asp:TextBox ID="txtUrlImagen" runat="server" CssClass="form-control" AutoPostBack="true" type="text" MaxLength="5000"></asp:TextBox>
-                                </div>
-                                <div class="col-2">
-                                    <asp:Button ID="btnAgregar" runat="server" CssClass="icon-buttonAgregar" Text="Agregar"/>
+                                    <asp:TextBox ID="TbImagen" runat="server" CssClass="form-control" AutoPostBack="true" type="text" MaxLength="5000"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +48,7 @@
                                 <ItemTemplate>
                                     <div style="margin-bottom: 10px;">
                                         <img src='<%# Eval("UrlImagen") %>' style="width: 40%; height: auto;" />
-                                        <asp:Button ID="btnQuitar" runat="server" CssClass="icon-buttonQuitar"/>
+                                        <asp:Button ID="btnQuitar" runat="server" CssClass="icon-buttonQuitar" />
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
@@ -60,8 +57,8 @@
                 </asp:UpdatePanel>
             </div>
             <div class="m-3">
-                <asp:Button ID="btnAceptar" runat="server" Text="Agregar" CssClass="btn btn-primary" />
-                <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar"/>
+                <asp:Button ID="btnAceptar" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
+                <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click" />
             </div>
         </div>
     </div>
