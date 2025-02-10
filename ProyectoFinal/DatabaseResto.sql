@@ -138,7 +138,7 @@ GO
 create or alter procedure sp_ListarMenu
 AS
 BEGIN 
-	select IdPlato, Nombre, Precio, Stock, Imagen from Menu where Stock > 0
+	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu where Stock > 0
 END
 go
 

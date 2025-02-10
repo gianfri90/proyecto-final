@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministrarInsumo.aspx" />
     <Content Include="AgregarInsumo.aspx" />
     <Content Include="AsignacionMesas.aspx" />
     <Content Include="DetalleMesa.aspx" />
@@ -82,6 +83,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarInsumo.aspx.cs">
+      <DependentUpon>AdministrarInsumo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarInsumo.aspx.designer.cs">
+      <DependentUpon>AdministrarInsumo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarInsumo.aspx.cs">
       <DependentUpon>AgregarInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

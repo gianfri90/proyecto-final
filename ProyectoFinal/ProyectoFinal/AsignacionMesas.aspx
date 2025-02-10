@@ -7,7 +7,6 @@
             <div class="m-3">
                 <asp:GridView CssClass="table table-light" ID="DgvMesaAsignadas" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="DgvMesa_SelectedIndexChanged">
                     <Columns>
-                        <asp:BoundField HeaderText="Id" DataField="mesa.IdMesa" />
                         <asp:BoundField HeaderText="Mesa" DataField="mesa.NumeroMesa" />
                         <asp:BoundField HeaderText="Mesero" DataField="usuario.Nombre" />
                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" />

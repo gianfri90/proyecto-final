@@ -24,6 +24,7 @@ namespace Manager
                     aux.IdPlato = (int)datos.Lector["IdPlato"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Estado = (bool)datos.Lector["Estado"];
                     aux.Stock = (int)datos.Lector["Stock"];
                     if (!(datos.Lector["Imagen"] is DBNull))
                         aux.Imagen = (string)datos.Lector["Imagen"];
