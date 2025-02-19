@@ -27,7 +27,8 @@ namespace ProyectoFinal
 
         protected void DgvInsumo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var IdInsumo = DgvInsumo.SelectedDataKey.Value.ToString();
+            Response.Redirect("DetalleInsumo.aspx?IdInsumo=" + IdInsumo,false);
         }
     }
 }

@@ -63,5 +63,59 @@ namespace Manager
                 throw;
             }
         }
+
+        public void cargarInsumo(Menu menu)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_cargarInsum");
+                datos.setearParametros("@IdInsumo",menu.IdPlato);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    menu.Nombre = (string)datos.Lector["Nombre"];
+                    menu.Precio= (decimal)datos.Lector["Precio"];
+                    menu.Estado = (bool)datos.Lector["Estado"];
+                    menu.Stock = (int)datos.Lector["Stock"];
+                    if (!(datos.Lector["Imagen"] is DBNull))
+                        menu.Imagen = (string)datos.Lector["Imagen"];
+                    else
+                        menu.Imagen = "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void ModificarInsumo(Menu menu)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_ModificarInsumo");
+                datos.setearParametros("@IdInsumo", menu.IdPlato);
+                datos.setearParametros("@Stock", menu.Stock);
+                datos.setearParametros("@Precio", menu.Precio);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

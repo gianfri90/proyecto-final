@@ -213,8 +213,26 @@ begin
 	INSERT INTO Menu (Nombre, Precio, stock,imagen)
 	VALUES (@Nombre,@Precio,@Stock,@Imagen)
 end
+go
 
+create or alter procedure sp_CargarInsum(
+	@IdInsumo int
+)as
+begin
+	select Nombre, Precio, Stock, Imagen, Estado from Menu
+	where IdPlato = @IdInsumo
+end
 
+create or alter procedure sp_ModificarInsumo(
+	@Precio money,
+	@IdInsumo int,
+	@Stock int
+)as
+begin
+	update Menu
+	set Precio = @Precio, Stock = @Stock
+	where IdPlato = @IdInsumo
+end
 
 
 

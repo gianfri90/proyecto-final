@@ -5,7 +5,7 @@
     <div class="row">
         <div col="col-10">
             <div class="m-3">
-                <asp:GridView CssClass="table table-Black" ID="DgvInsumo" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="DgvInsumo_SelectedIndexChanged">
+                <asp:GridView CssClass="table table-Black" ID="DgvInsumo" DataKeyNames="IdPlato" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="DgvInsumo_SelectedIndexChanged">
                     <columns>
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                         <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="${0:0.00}" HtmlEncode="false" />
@@ -17,5 +17,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
