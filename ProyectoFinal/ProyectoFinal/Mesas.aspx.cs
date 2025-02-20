@@ -18,7 +18,7 @@ namespace ProyectoFinal
                 if (Session["Usuario"] == null)
                 {
                     Session.Add("error", "debes ser administrador");
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("Error.aspx");
                 }
                 MesaManager mesaManager = new MesaManager();
                 int IdUsuario = int.Parse((((Usuario)Session["Usuario"]).IdUsuario.ToString()));

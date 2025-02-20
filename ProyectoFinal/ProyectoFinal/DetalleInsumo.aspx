@@ -57,7 +57,7 @@
         <%}
             else
             {%>
-            <asp:Button ID="btnModificar" CssClass="btn btn-secondary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
+            <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
         <% } %>
         <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" onclick="btnCancelar_Click"/>
     </div>

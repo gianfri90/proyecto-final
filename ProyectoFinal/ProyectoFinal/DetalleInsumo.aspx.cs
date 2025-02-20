@@ -12,22 +12,33 @@ namespace ProyectoFinal
     public partial class DetalleInsumo : System.Web.UI.Page
     {
         public bool modicar;
+        protected int IdInsumo;
         protected void Page_Load(object sender, EventArgs e)
         {
             Dominio.Menu menu = new Dominio.Menu();
             MenuManager Menumanager = new MenuManager();
-            menu.IdPlato = int.Parse(Request.QueryString["IdInsumo"].ToString());
-            Menumanager.cargarInsumo(menu);
             if (!IsPostBack)
             {
-                modicar = false;
-                TbNombreInsumo.Text = menu.Nombre.ToString();
-                TbPrecio.Text = menu.Precio.ToString();
-                TbStock.Text = menu.Stock.ToString();
-                imgInsumo.ImageUrl = menu.Imagen.ToString();
-                TbNombreInsumo.Enabled = false;
-                TbPrecio.Enabled = false;
-                TbStock.Enabled = false;
+                if (Session["Usuario"] == null)
+                {
+                    Session.Add("error", "Debes iniciar sesion");
+                    Response.Redirect("Error.aspx");
+                }
+                MesasAsignadasManager mesasAsignadasmanager = new MesasAsignadasManager();
+                string IdQuery = Request.QueryString["IdInsumo"];
+                if (!string.IsNullOrEmpty(IdQuery) && int.TryParse(IdQuery, out IdInsumo))
+                {
+                    menu.IdPlato = IdInsumo;
+                    Menumanager.cargarInsumo(menu);
+                    modicar = false;
+                    TbNombreInsumo.Text = menu.Nombre.ToString();
+                    TbPrecio.Text = menu.Precio.ToString();
+                    TbStock.Text = menu.Stock.ToString();
+                    imgInsumo.ImageUrl = menu.Imagen.ToString();
+                    TbNombreInsumo.Enabled = false;
+                    TbPrecio.Enabled = false;
+                    TbStock.Enabled = false;
+                }
 
             }
         }
