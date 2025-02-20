@@ -12,6 +12,7 @@ namespace ProyectoFinal
     public partial class DetalleInsumo : System.Web.UI.Page
     {
         public bool modicar;
+        public bool Estado;
         protected int IdInsumo;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,14 +31,17 @@ namespace ProyectoFinal
                 {
                     menu.IdPlato = IdInsumo;
                     Menumanager.cargarInsumo(menu);
+                    Estado = menu.Estado;
                     modicar = false;
                     TbNombreInsumo.Text = menu.Nombre.ToString();
                     TbPrecio.Text = menu.Precio.ToString();
                     TbStock.Text = menu.Stock.ToString();
                     imgInsumo.ImageUrl = menu.Imagen.ToString();
+                    CbEstado.Checked = menu.Estado;
                     TbNombreInsumo.Enabled = false;
                     TbPrecio.Enabled = false;
                     TbStock.Enabled = false;
+                    CbEstado.Enabled = false;
                 }
 
             }
@@ -49,6 +53,7 @@ namespace ProyectoFinal
             TbNombreInsumo.Enabled = true;
             TbPrecio.Enabled = true;
             TbStock.Enabled = true;
+            CbEstado.Enabled = true;
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -59,6 +64,7 @@ namespace ProyectoFinal
             menu.Nombre= TbNombreInsumo.Text;
             menu.Precio = decimal.Parse(TbPrecio.Text);
             menu.Stock = int.Parse(TbStock.Text);
+            menu.Estado = CbEstado.Checked;
             Menumanager.ModificarInsumo(menu);
             Response.Redirect("AdministrarInsumo.aspx", false);
         }

@@ -123,6 +123,15 @@ namespace ProyectoFinal
         protected global::System.Web.UI.WebControls.Repeater RepeaterImages;
 
         /// <summary>
+        /// Control CbEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CbEstado;
+
+        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>

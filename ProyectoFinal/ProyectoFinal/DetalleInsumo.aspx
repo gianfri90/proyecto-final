@@ -43,6 +43,7 @@
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>
+                        <asp:CheckBox ID="CbEstado" runat="server" Text="Estado Insumo"></asp:CheckBox>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>

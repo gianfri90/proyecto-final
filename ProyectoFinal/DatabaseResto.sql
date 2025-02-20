@@ -222,15 +222,17 @@ begin
 	select Nombre, Precio, Stock, Imagen, Estado from Menu
 	where IdPlato = @IdInsumo
 end
+go
 
 create or alter procedure sp_ModificarInsumo(
 	@Precio money,
 	@IdInsumo int,
+	@Estado bit,
 	@Stock int
 )as
 begin
 	update Menu
-	set Precio = @Precio, Stock = @Stock
+	set Precio = @Precio, Stock = @Stock, Estado = @Estado
 	where IdPlato = @IdInsumo
 end
 

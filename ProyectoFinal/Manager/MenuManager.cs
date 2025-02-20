@@ -104,6 +104,7 @@ namespace Manager
                 datos.setearParametros("@IdInsumo", menu.IdPlato);
                 datos.setearParametros("@Stock", menu.Stock);
                 datos.setearParametros("@Precio", menu.Precio);
+                datos.setearParametros("@Estado", menu.Estado);
                 datos.ejecutarEscalar();
             }
             catch (Exception ex)
