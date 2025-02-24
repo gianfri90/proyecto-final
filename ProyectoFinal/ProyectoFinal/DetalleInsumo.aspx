@@ -18,13 +18,13 @@
             <asp:Label ID="LbStock" runat="server" Text="Stock Insumo"></asp:Label>
             <asp:TextBox ID="TbStock" runat="server" placeholder="Stock" CssClass="form-control form-control-lg"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvStock" runat="server" CssClass="validator" ControlToValidate="TbStock" ErrorMessage="Este campo es requerido."></asp:RequiredFieldValidator>
-            <asp:RangeValidator ID="rvStock" runat="server" CssClass="validator" ErrorMessage="Ingrese un rango válldo. Utilice coma para decimales." ControlToValidate="TbStock" Type="Currency" MinimumValue="1,00" MaximumValue="10000000,00"></asp:RangeValidator>
+            <asp:RangeValidator ID="rvStock" runat="server" CssClass="validator" ErrorMessage="Ingrese un rango válldo. Utilice coma para decimales." ControlToValidate="TbStock" Type="Currency" MinimumValue="1" MaximumValue="10000000"></asp:RangeValidator>
         </div>
         <div class="m-3">
             <asp:Label ID="LbPrecio" runat="server" Text="Precio Insumo"></asp:Label>
             <asp:TextBox ID="TbPrecio" runat="server" placeholder="Precio" CssClass="form-control form-control-lg"></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvPrecio" runat="server" CssClass="validator" ControlToValidate="TbPrecio" ErrorMessage="Este campo es requerido."></asp:RequiredFieldValidator>
-            <asp:RangeValidator ID="rvPrecio" runat="server" CssClass="validator" ErrorMessage="Ingrese un rango válldo. Utilice coma para decimales." ControlToValidate="TbPrecio" Type="Currency" MinimumValue="1,00" MaximumValue="10000000,00"></asp:RangeValidator>
+            <asp:RangeValidator ID="rvPrecio" runat="server" CssClass="validator" ErrorMessage="Ingrese un rango válldo. Utilice coma para decimales." ControlToValidate="TbPrecio" Type="Currency" MinimumValue="1,0" MaximumValue="10000000,0"></asp:RangeValidator>
         </div>
     </div>
     <div class="col-3">
@@ -50,16 +50,7 @@
         </div>
     </div>
     <div class="m-3">
-        <%if (modicar)
-            {
-
-        %>
-            <asp:Button ID="btnAceptar" runat="server" Text="Agregar" CssClass="btn btn-primary" onclick="btnAceptar_Click"/>
-        <%}
-            else
-            {%>
-            <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
-        <% } %>
+        <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
         <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" onclick="btnCancelar_Click"/>
     </div>
 </div>

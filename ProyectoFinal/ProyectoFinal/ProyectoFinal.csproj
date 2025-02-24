@@ -67,7 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministrarInsumo.aspx" />
+    <Content Include="ListarInsumo.aspx" />
     <Content Include="AgregarInsumo.aspx" />
     <Content Include="AsignacionMesas.aspx" />
     <Content Include="DetalleInsumo.aspx" />
@@ -78,17 +78,19 @@
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Mesas.aspx" />
+    <Content Include="PedidosMesa.aspx" />
+    <Content Include="PedidosMesero.aspx" />
     <Content Include="Registarse.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrarInsumo.aspx.cs">
-      <DependentUpon>AdministrarInsumo.aspx</DependentUpon>
+    <Compile Include="ListarInsumo.aspx.cs">
+      <DependentUpon>ListarInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministrarInsumo.aspx.designer.cs">
-      <DependentUpon>AdministrarInsumo.aspx</DependentUpon>
+    <Compile Include="ListarInsumo.aspx.designer.cs">
+      <DependentUpon>ListarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgregarInsumo.aspx.cs">
       <DependentUpon>AgregarInsumo.aspx</DependentUpon>
@@ -162,6 +164,20 @@
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMesa.aspx.cs">
+      <DependentUpon>PedidosMesa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosMesa.aspx.designer.cs">
+      <DependentUpon>PedidosMesa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosMesero.aspx.cs">
+      <DependentUpon>PedidosMesero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidosMesero.aspx.designer.cs">
+      <DependentUpon>PedidosMesero.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">

@@ -38,10 +38,6 @@ namespace ProyectoFinal
                     TbStock.Text = menu.Stock.ToString();
                     imgInsumo.ImageUrl = menu.Imagen.ToString();
                     CbEstado.Checked = menu.Estado;
-                    TbNombreInsumo.Enabled = false;
-                    TbPrecio.Enabled = false;
-                    TbStock.Enabled = false;
-                    CbEstado.Enabled = false;
                 }
 
             }
@@ -49,29 +45,30 @@ namespace ProyectoFinal
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            modicar = true;
-            TbNombreInsumo.Enabled = true;
-            TbPrecio.Enabled = true;
-            TbStock.Enabled = true;
-            CbEstado.Enabled = true;
-        }
+            try
+            {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+                Dominio.Menu menu = new Dominio.Menu();
+                MenuManager Menumanager = new MenuManager();
+                menu.IdPlato = int.Parse(Request.QueryString["IdInsumo"].ToString());
+                menu.Nombre = TbNombreInsumo.Text;
+                menu.Precio = decimal.Parse(TbPrecio.Text);
+                menu.Stock = int.Parse(TbStock.Text);
+                menu.Estado = CbEstado.Checked;
+                Menumanager.ModificarInsumo(menu);
+                Response.Redirect("ListarInsumo.aspx", false);
+            }
+            catch (Exception ex)
+            {
 
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-            Dominio.Menu menu = new Dominio.Menu();
-            MenuManager Menumanager = new MenuManager();
-            menu.IdPlato = int.Parse(Request.QueryString["IdInsumo"].ToString());
-            menu.Nombre= TbNombreInsumo.Text;
-            menu.Precio = decimal.Parse(TbPrecio.Text);
-            menu.Stock = int.Parse(TbStock.Text);
-            menu.Estado = CbEstado.Checked;
-            Menumanager.ModificarInsumo(menu);
-            Response.Redirect("AdministrarInsumo.aspx", false);
+                throw ex;
+            }
         }
-
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdministrarInsumo.aspx", false);
+            Response.Redirect("ListarInsumo.aspx", false);
         }
     }
 }

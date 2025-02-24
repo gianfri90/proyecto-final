@@ -19,7 +19,7 @@ namespace ProyectoFinal
                     Session.Add("error", "Debes iniciar sesion");
                     Response.Redirect("Error.aspx");
                 }
-                MenuManager menuManager = new MenuManager();            
+                MenuManager menuManager = new MenuManager();
                 DgvInsumo.DataSource = menuManager.listarMenu();
                 DgvInsumo.DataBind();
             }

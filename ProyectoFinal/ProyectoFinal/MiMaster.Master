@@ -29,7 +29,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="/AgregarInsumo.aspx">Nuevo Insumo</a></li>
-                                        <li><a class="dropdown-item" href="/AdministrarInsumo.aspx">Administrar Insumo</a></li>
+                                        <li><a class="dropdown-item" href="/ListarInsumo.aspx">Listar Insumo</a></li>
                                     </ul>
                                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
                                     </a>
@@ -51,13 +51,13 @@
                             <%if (Session["Usuario"] != null)
                                 {
 
-%>
-                                    <asp:Button ID="BtSalir" runat="server" CssClass="nav-link" Text="Salir" type="text" OnClick="BtSalir_Click" />
+                            %>
+                                <asp:Button ID="BtSalir" runat="server" CssClass="nav-link" Text="Salir" type="text" OnClick="BtSalir_Click" />
                             <%}
-                               else
+                                else
                                 {%>
-                                     <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">IniciarSesion</a></li>
-                                <% } %>
+                                <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">IniciarSesion</a></li>
+                            <% } %>
                         </ul>
                     </div>
             </div>

@@ -52,6 +52,10 @@ namespace ProyectoFinal
                     Session.Add("Usuario", usuario);
                     Response.Redirect("default.aspx", false);
                 }
+                else
+                {
+                    Response.Redirect("Error.aspx");
+                }
                 
             }
             catch (Exception ex)

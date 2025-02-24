@@ -16,7 +16,7 @@ namespace ProyectoFinal
             if (!IsPostBack)
             {
                 MenuManager menuManager = new MenuManager();
-                RepMenu.DataSource = menuManager.listarMenu();
+                RepMenu.DataSource = menuManager.listarMenu().FindAll(a => a.Estado == true);
                 RepMenu.DataBind();
             }
         }

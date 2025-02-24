@@ -138,7 +138,7 @@ GO
 create or alter procedure sp_ListarMenu
 AS
 BEGIN 
-	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu where Stock > 0
+	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu
 END
 go
 
@@ -168,14 +168,23 @@ create or alter procedure sp_AsignarPlato(
 )as
 begin
 	DECLARE @IdFactura int
+	declare @Stock int
 	select @IdFactura = IdFactura from factura f where @IdMesa = IdMesa and f.Estado = 'ABIERTA'
 	insert into DetalleMesa (IdPlato,IdFactura,Precio) values (@IdPlato,@IdFactura,@IdPlato)
 	update Menu
 	set stock = stock - 1
 	where IdPlato = @IdPlato
+	select @Stock = stock from menu
+	where IdPlato = @IdPlato
+	if @Stock <= 0
+	begin
+		update Menu
+		set Estado = 0, stock = 0
+		where IdPlato = @IdPlato
+	end
 end
 go
-
+	
 create or alter procedure sp_BuscarFactura(
 	@IdMesa int
 )as
