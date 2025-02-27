@@ -24,21 +24,6 @@ namespace ProyectoFinal
                 TbContrasenia.Attributes["type"] = tipo;
             }
         }
-
-        protected void BtMostrarContra_Click(object sender, EventArgs e)
-        {
-            tipo = "text";
-            Mostrar = true;
-            TbContrasenia.Attributes["type"] = tipo;
-        }
-
-        protected void BtOcultarContraseña_Click(object sender, EventArgs e)
-        {
-            tipo = "password";
-            Mostrar = false;
-            TbContrasenia.Attributes["type"] = tipo;
-        }
-
         protected void BtAceptar_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
@@ -64,6 +49,20 @@ namespace ProyectoFinal
                 Session.Add("error", ex.ToString());
                 Response.Redirect("Error.aspx");
             }
+        }
+
+        protected void BtOcultarContraseña_Click(object sender, EventArgs e)
+        {
+            tipo = "password";
+            Mostrar = false;
+            TbContrasenia.Attributes["type"] = tipo;
+        }
+
+        protected void BtMostrarContra_Click(object sender, EventArgs e)
+        {
+            tipo = "text";
+            Mostrar = true;
+            TbContrasenia.Attributes["type"] = tipo;
         }
     }
 }

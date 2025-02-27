@@ -64,5 +64,27 @@ namespace Manager
             }
             return ListaMesas;
         }
+
+        public int CantidadMesasSinAsignar()
+        {
+            int cantidadMesas = 0;
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearProcedimiento("sp_ExisteMesaAsignadaas");
+                datos.ejecutarLectura();
+                while(datos.Lector.Read())
+                {
+                    cantidadMesas = (int)datos.Lector["MesasSinAsignar"];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return cantidadMesas;
+        }
+
     }
 }

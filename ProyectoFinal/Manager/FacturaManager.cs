@@ -78,5 +78,31 @@ namespace Manager
             }
             return IdFactura;
         }
+
+        public decimal TotalRecaudado()
+        {
+            decimal total = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_ListarTotalRecaudado");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    total = (decimal)datos.Lector["Total"];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            {
+                datos.cerrarConexion();
+            }
+            return total;
+        }
+
     }
 }

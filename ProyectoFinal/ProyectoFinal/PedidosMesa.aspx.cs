@@ -35,7 +35,7 @@ namespace ProyectoFinal
 
                 throw;
             }
-    }
+        }
         private void cargarTotalCompra()
         {
             if (Detalle != null && Detalle.Any())
@@ -48,3 +48,4 @@ namespace ProyectoFinal
             }
         }
     }
+}

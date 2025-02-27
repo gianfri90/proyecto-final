@@ -142,11 +142,10 @@ BEGIN
 END
 go
 
-create or alter procedure sp_ExisteMesaAsignada(
-	@IdMesa int
-)as
+create or alter procedure sp_ExisteMesaAsignadaas
+as
 begin
-	select IdMesa from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE) and IdMesa = @IdMesa
+	select count(IdMesa) as MesasSinAsignar from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE)
 end
 go
 
@@ -245,5 +244,13 @@ begin
 	where IdPlato = @IdInsumo
 end
 
+create or alter procedure sp_ListarTotalRecaudado
+as
+begin
+	select isnull(sum(dm.Precio),0) as Total from detalleMesa dm
+	inner join factura f on f.IdFactura = dm.IdFactura
+	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
+	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
+end
 
 
