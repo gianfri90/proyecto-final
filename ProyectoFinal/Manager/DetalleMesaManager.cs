@@ -51,7 +51,6 @@ namespace Manager
                 datos.setearProcedimiento("sp_AsignarPlato");
                 datos.setearParametros("@IdMesa", IdMesa);
                 datos.setearParametros("@IdPlato", IdPlato);
-                datos.setearParametros("@precio",)
                 datos.ejecutarEscalar();
             }
             catch (Exception ex)

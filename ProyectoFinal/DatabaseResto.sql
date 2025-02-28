@@ -269,5 +269,10 @@ begin
 	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
 end
 
-SELECT * from factura f
-select * from Menu m 
+SELECT u.nombre +' '+u.Apellido , sum(dm.precio) as precio, count(distinct(f.IdFactura)) as cantidadAtendida from factura f
+inner join DetalleMesa dm on f.IdFactura = dm.IdFactura
+inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa 
+inner join Usuario u on ma.IdUsuario = u.IdUsuario 
+group by u.Nombre, u.Apellido;
+select * from Usuario u2 
+select * from DetalleMesa dm2 
