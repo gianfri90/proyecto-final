@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DetalleMesero.aspx" />
     <Content Include="ListarInsumo.aspx" />
     <Content Include="AgregarInsumo.aspx" />
     <Content Include="AsignacionMesas.aspx" />
@@ -85,6 +86,13 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetalleMesero.aspx.cs">
+      <DependentUpon>DetalleMesero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleMesero.aspx.designer.cs">
+      <DependentUpon>DetalleMesero.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarInsumo.aspx.cs">
       <DependentUpon>ListarInsumo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

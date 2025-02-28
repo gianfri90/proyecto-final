@@ -142,12 +142,20 @@ BEGIN
 END
 go
 
-create or alter procedure sp_ExisteMesaAsignadaas
-as
+create or alter procedure sp_ExisteMesaAsignada(
+	@IdMesa int
+)as
 begin
-	select count(IdMesa) as MesasSinAsignar from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE)
+	select IdMesa from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE) and IdMesa = @IdMesa
 end
 go
+
+create or alter procedure sp_CantidadMesasAsignadas
+AS 
+BEGIN 
+	select count(IdMesa) as MesasSinAsignar from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE)
+END
+GO 
 
 create or alter procedure sp_ListarDetalle(
 	@IdMesa int,
@@ -168,8 +176,15 @@ create or alter procedure sp_AsignarPlato(
 begin
 	DECLARE @IdFactura int
 	declare @Stock int
+	declare @Precio money
+	
 	select @IdFactura = IdFactura from factura f where @IdMesa = IdMesa and f.Estado = 'ABIERTA'
-	insert into DetalleMesa (IdPlato,IdFactura,Precio) values (@IdPlato,@IdFactura,@IdPlato)
+	
+	select @Precio = m.Precio from Menu m 
+	WHERE m.IdPlato = @IdPlato
+	
+	insert into DetalleMesa (IdPlato,IdFactura,Precio) values (@IdPlato,@IdFactura,@Precio)
+	
 	update Menu
 	set stock = stock - 1
 	where IdPlato = @IdPlato
@@ -243,14 +258,16 @@ begin
 	set Precio = @Precio, Stock = @Stock, Estado = @Estado
 	where IdPlato = @IdInsumo
 end
+go
 
 create or alter procedure sp_ListarTotalRecaudado
 as
 begin
-	select isnull(sum(dm.Precio),0) as Total from detalleMesa dm
+	select * from detalleMesa dm
 	inner join factura f on f.IdFactura = dm.IdFactura
 	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
 	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
 end
 
-
+SELECT * from factura f
+select * from Menu m 

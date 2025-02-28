@@ -34,7 +34,7 @@ namespace ProyectoFinal
                     Estado = menu.Estado;
                     modicar = false;
                     TbNombreInsumo.Text = menu.Nombre.ToString();
-                    TbPrecio.Text = menu.Precio.ToString();
+                    TbPrecio.Text = menu.Precio.ToString("F2");
                     TbStock.Text = menu.Stock.ToString();
                     imgInsumo.ImageUrl = menu.Imagen.ToString();
                     CbEstado.Checked = menu.Estado;

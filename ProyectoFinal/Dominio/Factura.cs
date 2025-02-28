@@ -10,6 +10,7 @@ namespace Dominio
     {
         public int IdFactura {  get; set; }
         public Menu Menu { get; set; }
+        public Usuario Usuario { get; set; }
         public string Estado {  get; set; }
     }
 }

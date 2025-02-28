@@ -71,7 +71,7 @@ namespace Manager
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearProcedimiento("sp_ExisteMesaAsignadaas");
+                datos.setearProcedimiento("sp_CantidadMesasAsignadas");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
