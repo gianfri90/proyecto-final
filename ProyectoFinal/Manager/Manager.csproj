@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetalleMesaManager.cs" />
+    <Compile Include="DetalleMozoManager.cs" />
     <Compile Include="FacturaManager.cs" />
     <Compile Include="MenuManager.cs" />
     <Compile Include="MesaManager.cs" />

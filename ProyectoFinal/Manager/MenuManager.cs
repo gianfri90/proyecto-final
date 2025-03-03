@@ -16,7 +16,7 @@ namespace Manager
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("sp_ListarMenu");
+                datos.setearProcedimiento("sp_ListaMenu");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

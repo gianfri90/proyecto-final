@@ -135,12 +135,6 @@ begin
 end
 GO 
 
-create or alter procedure sp_ListarMenu
-AS
-BEGIN 
-	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu
-END
-go
 
 create or alter procedure sp_ExisteMesaAsignada(
 	@IdMesa int
@@ -148,6 +142,13 @@ create or alter procedure sp_ExisteMesaAsignada(
 begin
 	select IdMesa from MesasAsignadas ma where Fecha = CAST(GETDATE() AS DATE) and IdMesa = @IdMesa
 end
+go
+
+create or alter procedure sp_listaMenu
+AS
+BEGIN 
+	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu
+END
 go
 
 create or alter procedure sp_CantidadMesasAsignadas
@@ -263,16 +264,20 @@ go
 create or alter procedure sp_ListarTotalRecaudado
 as
 begin
-	select * from detalleMesa dm
+	select sum(precio) as total from detalleMesa dm
 	inner join factura f on f.IdFactura = dm.IdFactura
 	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
 	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
 end
+go
 
-SELECT u.nombre +' '+u.Apellido , sum(dm.precio) as precio, count(distinct(f.IdFactura)) as cantidadAtendida from factura f
-inner join DetalleMesa dm on f.IdFactura = dm.IdFactura
-inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa 
-inner join Usuario u on ma.IdUsuario = u.IdUsuario 
-group by u.Nombre, u.Apellido;
-select * from Usuario u2 
-select * from DetalleMesa dm2 
+create or alter procedure sp_DetalleMosos
+as
+begin
+	SELECT u.nombre +' '+u.Apellido as Nombre , sum(dm.precio) as Total, count(distinct(f.IdFactura)) as cantidadAtendida from factura f
+	inner join DetalleMesa dm on f.IdFactura = dm.IdFactura
+	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa 
+	inner join Usuario u on ma.IdUsuario = u.IdUsuario 
+	group by u.Nombre, u.Apellido;
+end
+
