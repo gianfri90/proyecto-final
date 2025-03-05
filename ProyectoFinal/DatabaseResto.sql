@@ -264,7 +264,7 @@ go
 create or alter procedure sp_ListarTotalRecaudado
 as
 begin
-	select sum(precio) as total from detalleMesa dm
+	select isnull(sum(precio),0) as total from detalleMesa dm
 	inner join factura f on f.IdFactura = dm.IdFactura
 	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
 	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
@@ -280,4 +280,3 @@ begin
 	inner join Usuario u on ma.IdUsuario = u.IdUsuario 
 	group by u.Nombre, u.Apellido;
 end
-

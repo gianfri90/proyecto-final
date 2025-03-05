@@ -35,11 +35,19 @@ namespace ProyectoFinal
                 if (usuarios.IniciarSesion(usuario))
                 {
                     Session.Add("Usuario", usuario);
-                    Response.Redirect("default.aspx", false);
+                    if((int)usuario.tipoUsuario == 1)
+                    {
+                        Response.Redirect("Default.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("Mesas.aspx", false);
+                    }
                 }
                 else
                 {
-                    Response.Redirect("Error.aspx");
+                    Session.Add("error", "Usuario incorrecto");
+                    Response.Redirect("Error.aspx",false);
                 }
                 
             }

@@ -28,6 +28,8 @@ namespace ProyectoFinal
 				    DgvMesaAsignadas.DataBind();
                     var meseros = mesero.ListarUsuario();
                     DdlMesero.DataSource = meseros;
+                    DdlMesero.DataTextField = "Nombre";  // Este es el campo que se mostrará en el dropdown
+                    DdlMesero.DataValueField = "IdUsuario";    // Este es el campo que se utilizará como valor (ID)
                     DdlMesero.DataBind();
                 }
                 if (Session["Usuario"] == null || ((Usuario)Session["Usuario"]).esAdministrador() == false)
@@ -54,7 +56,7 @@ namespace ProyectoFinal
         {
             MesasAsignadasManager MesasAsignadas = new MesasAsignadasManager();
             int IdMesa = (int)Session["IdMesa"];
-            int IdMesero = DdlMesero.SelectedIndex + 1;
+            int IdMesero = int.Parse(DdlMesero.SelectedValue);
             MesasAsignadas.AsignarMesero(IdMesa, IdMesero);
             Asignar = false;
             Response.Redirect("AsignacionMesas.aspx", false);

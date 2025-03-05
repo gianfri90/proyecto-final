@@ -17,7 +17,7 @@ namespace ProyectoFinal
         protected void BtSalir_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("Default.aspx", false);
+            Response.Redirect("IniciarSesion.aspx", false);
         }
     }
 }
