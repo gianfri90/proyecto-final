@@ -299,3 +299,5 @@ begin
 	group by u.Nombre, u.Apellido;
 end
 
+
+SELECT * from Usuario u 

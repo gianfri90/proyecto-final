@@ -14,19 +14,19 @@
             </div>
             <div class="mb-3">
                 <label for="inputEmail">Email</label>
-                <asp:TextBox ID="TbMail" runat="server" type="Email" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="TbMail" runat="server" type="Email" placeholder="Ejemplo@mail.com" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="d-flex w-100 align-items-center">
                 <div class="mb-3">
                     <label for="InputContrasenia">Contaseña</label>
-                    <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="Contraseña"></asp:TextBox>
+                    <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="*******"></asp:TextBox>
                 </div>
                 <div class="ms-n1">
                 </div>
             </div><div class="d-flex w-100 align-items-center">
                 <div class="mb-3">
-                    <label for="InputContrasenia">Contaseña</label>
-                    <asp:TextBox ID="TbConfirmarConftraseña" runat="server" CssClass="form-control mb-2" placeholder="Repetir Contraseña"></asp:TextBox>
+                    <label for="InputContrasenia">Confirmar Contaseña</label>
+                    <asp:TextBox ID="TbConfirmarConftraseña" runat="server" CssClass="form-control mb-2" placeholder="*******"></asp:TextBox>
                 </div>
                 <div class="ms-n1">
 
