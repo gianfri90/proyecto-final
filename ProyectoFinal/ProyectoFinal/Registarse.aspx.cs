@@ -50,27 +50,37 @@ namespace ProyectoFinal
             Usuario usuario = new Usuario();
             UsuarioManager usuarioManager = new UsuarioManager();
             usuario.Mail = TbMail.Text;
-            if (usuarioManager.ExisteUsuario(usuario) == false)
-            {
-                if (TbContrasenia.Text == TbConfirmarConftraseña.Text)
-                {
-                    usuario.Nombre = TbNombre.Text;
-                    usuario.Apellido = TbApellido.Text;
-                    usuario.Contraseña = TbContrasenia.Text;
-                    usuarioManager.RegistrarUsuario(usuario);
-                    Response.Redirect("Default.aspx",false);
-                }
-                else
-                {
-                    Session.Add("error", "Los datos ya existen");
-                    Response.Redirect("error.aspx", false);
-                }
-            }
-            else
+            if (usuarioManager.ExisteUsuario(usuario) == true)
             {
                 Session.Add("error", "el usuario ya existe");
                 Response.Redirect("error.aspx", false);
             }
+            if(usuario.Mail.Length == 0)
+            {
+                Session.Add("error", "No se esta ingresando ningun mail");
+                Response.Redirect("error.aspx", false);
+                return;
+            }
+            if(TbContrasenia.Text.Length < 4)
+            {
+                Session.Add("error", "Los datos ya existen o estan mal ingresados");
+                Response.Redirect("error.aspx", false);
+                return;
+            }
+            if (TbContrasenia.Text == TbConfirmarConftraseña.Text && TbContrasenia.Text.Length > 4)
+            {
+                usuario.Nombre = TbNombre.Text;
+                usuario.Apellido = TbApellido.Text;
+                usuario.Contraseña = TbContrasenia.Text;
+                usuarioManager.RegistrarUsuario(usuario);
+                Response.Redirect("Default.aspx",false);
+            }
+            else
+            {
+                Session.Add("error", "Los datos ya existen o estan mal ingresados");
+                Response.Redirect("error.aspx", false);
+            }
+           
         }
     }
 }

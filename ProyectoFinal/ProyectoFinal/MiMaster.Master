@@ -22,15 +22,20 @@
                     <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
                         {%>
                         <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
-                    <%}else if(Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == false)
-                    {%>
+                    <%}
+                        else if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == false)
+                        {%>
                         <a class="navbar-brand me-auto" href="Mesas.aspx">Home</a>
+                    <%}
+                    else
+                    {%>
+                         <a class="navbar-brand me-auto" enable="false" href="">Home</a>
                     <%}%>
                     <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burguer house</span>
                         <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
                             <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
                                 {%>
-                                    <li class="nav-brand"><a class="nav-link active" href="/Registarse.aspx">Registrar</a></li>
+                                    <li class="nav-brand"><a class="nav-link" href="/Registarse.aspx">Registrar</a></li>
                                     <a class ="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insumos
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -41,8 +46,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li><a class="dropdown-item" href="AsignacionMesas.aspx">Asignar Mesas</a></li>
-                                        <li><a class="dropdown-item" href="">Pedidos Por Mesa</a></li>
-                                        <li><a class="dropdown-item" href="">Pedidos Por Mesero</a></li>
+                                        <li><a class="dropdown-item" href="DetalleMozo.aspx">Detalle Mozos</a></li>
                                     </ul>
 
                                <% }%>

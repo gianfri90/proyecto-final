@@ -17,8 +17,7 @@ namespace ProyectoFinal
             {
                 if (Session["Usuario"] == null)
                 {
-                    Session.Add("error", "Debes iniciar sesion");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("IniciarSesion.aspx");
                 }
                 MesasSinAsignar();
                 cargarTotal();

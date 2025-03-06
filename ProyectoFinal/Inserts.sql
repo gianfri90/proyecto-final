@@ -17,9 +17,9 @@ go
 
 INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
 VALUES 
-('admin@ejemplo.com', 'admin123', 1,'y','u'),
 ('cliente@ejemplo.com', 'password123', 2,'Gianfri','Panta'),
-('mesero@ejemplo.com', 'password123', 2,'n','m')
+('mesero@ejemplo.com', 'password123', 2,'n','m'),
+('admin@ejemplo.com', 'admin123', 1,'y','u')
 go
 
 INSERT INTO Mesas (NumeroMesa)

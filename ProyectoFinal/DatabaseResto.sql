@@ -31,7 +31,8 @@ create table Menu(
 	Precio money not null,
 	stock int not null,
 	Imagen varchar(300),
-	estado bit not null
+	estado bit not null,
+	eliminado BIT NOT NULL DEFAULT 0
 );
 go
 
@@ -46,7 +47,9 @@ go
 create table factura(
 	IdFactura int primary key not null identity(1,1),
 	IdMesa int foreign key references Mesas(IdMesa),
+	IdUsuario int foreign key references Usuario(IdUsuario),
 	Estado varchar(50) not null default('ABIERTA'),
+	fecha date
 )
 go
 
@@ -147,7 +150,7 @@ go
 create or alter procedure sp_listaMenu
 AS
 BEGIN 
-	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu
+	select IdPlato, Nombre, Precio, Stock, Imagen, Estado from Menu where eliminado = 0
 END
 go
 
@@ -209,11 +212,12 @@ end
 go
 
 create or alter procedure sp_AgregarFactura(
-	@IdMesa int
+	@IdMesa int,
+	@IdUsuario int
 )AS 
 BEGIN 
-	insert into factura (IdMesa)
-	values(@IdMesa)
+	insert into factura (IdMesa,IdUsuario,fecha)
+	values(@IdMesa,@IdUsuario,getdate())
 END
 go
 
@@ -221,11 +225,14 @@ CREATE or alter PROCEDURE sp_CerrarFactura(
 	@IdMesa int
 )AS 
 BEGIN 
+	declare @IdUsuario int;
+	select @IdUsuario = IdUsuario from MesasAsignadas where @IdMesa = IdMesa
 	UPDATE factura 
 	set Estado = 'CERRADO'
 	where IdMesa = @IdMesa
 END
 go
+
 
 create or alter procedure sp_AgregarInsumo(
 	@Precio int,
@@ -234,8 +241,19 @@ create or alter procedure sp_AgregarInsumo(
 	@Imagen varchar(250)
 )as
 begin
-	INSERT INTO Menu (Nombre, Precio, stock,imagen)
-	VALUES (@Nombre,@Precio,@Stock,@Imagen)
+	INSERT INTO Menu (Nombre, Precio, stock,imagen,estado)
+	VALUES (@Nombre,@Precio,@Stock,@Imagen,1)
+	select * from Menu
+end
+go
+
+create or alter procedure sp_eliminarInsumo(
+	@IdInsumo int
+)as
+begin
+	update Menu
+	set eliminado = 1
+	where IdPlato = @IdInsumo
 end
 go
 
@@ -276,7 +294,8 @@ as
 begin
 	SELECT u.nombre +' '+u.Apellido as Nombre , sum(dm.precio) as Total, count(distinct(f.IdFactura)) as cantidadAtendida from factura f
 	inner join DetalleMesa dm on f.IdFactura = dm.IdFactura
-	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa 
-	inner join Usuario u on ma.IdUsuario = u.IdUsuario 
+	inner join Usuario u on f.IdUsuario = u.IdUsuario
+	where f.fecha = CAST(GETDATE() AS DATE)
 	group by u.Nombre, u.Apellido;
 end
+

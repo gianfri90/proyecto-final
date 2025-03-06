@@ -27,19 +27,20 @@ namespace ProyectoFinal
                 Page.Validate();
                 if (!Page.IsValid)
                     return;
-                Dominio.Menu menu = new Dominio.Menu();
+                    Dominio.Menu menu = new Dominio.Menu();
                     MenuManager menuManager = new MenuManager();
                     menu.Nombre = TbNombreInsumo.Text;
                     menu.Precio = decimal.Parse(TbPrecio.Text);
                     menu.Stock = int.Parse(TbStock.Text);
                     menu.Imagen = TbImagen.Text;
                     menuManager.agregarInsumo(menu);
-                    Response.Redirect("Default.aspx", false);
+                    Response.Redirect("ListarInsumo.aspx", false);
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                Session.Add("error", "El insumo con nombre" + TbNombreInsumo.Text + "ya existe");
+                Response.Redirect("Error.aspx", false);
             }
         }
 

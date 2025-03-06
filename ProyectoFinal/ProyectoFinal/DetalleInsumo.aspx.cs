@@ -70,5 +70,13 @@ namespace ProyectoFinal
         {
             Response.Redirect("ListarInsumo.aspx", false);
         }
+
+        protected void BtEliminar_Click(object sender, EventArgs e)
+        {
+            MenuManager Menumanager = new MenuManager();
+            int IdQuery = int.Parse(Request.QueryString["IdInsumo"]);
+            Menumanager.EliminarInsumo(IdQuery);
+            Response.Redirect("ListarInsumo.aspx", false);
+        }
     }
 }

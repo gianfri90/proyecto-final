@@ -2,6 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h1>Detalle Mozos</h1>
+    <%if (DgvDetalleMozo.Rows.Count == 0)
+        {%>
+    <p>Aún no hay mesas cerradas, se podrán visualizar después de cerrarlas</p>
+    <%} %>
     <div class="row">
     <div col="col-10">
         <div class="m-3">

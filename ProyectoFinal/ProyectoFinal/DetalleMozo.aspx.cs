@@ -11,6 +11,7 @@ namespace ProyectoFinal
 {
     public partial class DetalleMesero : System.Web.UI.Page
     {
+        public bool HayDetalle;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

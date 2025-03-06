@@ -54,6 +54,10 @@ namespace Manager
                 datos.setearParametros("@Stock", menu.Stock);
                 datos.setearParametros("@Precio", menu.Precio);
                 datos.setearParametros("@Nombre", menu.Nombre);
+                if (menu.Imagen.Trim().Length == 0)
+                {
+                    menu.Imagen = "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=";
+                }
                 datos.setearParametros("@Imagen", menu.Imagen);
                 datos.ejecutarEscalar();
             }
@@ -105,6 +109,26 @@ namespace Manager
                 datos.setearParametros("@Stock", menu.Stock);
                 datos.setearParametros("@Precio", menu.Precio);
                 datos.setearParametros("@Estado", menu.Estado);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void EliminarInsumo(int IdInsumo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_eliminarInsumo");
+                datos.setearParametros("IdInsumo",IdInsumo);
                 datos.ejecutarEscalar();
             }
             catch (Exception ex)

@@ -50,6 +50,7 @@
             </div>
         </div>
         <div class="m-3">
+            <asp:Button ID="BtEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary" OnClick="BtEliminar_Click"/>
             <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
             <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click" />
         </div>

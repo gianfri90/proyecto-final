@@ -81,9 +81,15 @@ namespace ProyectoFinal
         protected void IdAbrirMesa_Click1(object sender, EventArgs e)
         {
             FacturaManager factura = new FacturaManager();
+            int IdMozo = ((Usuario)Session["Usuario"]).IdUsuario.Value;
             int IdQuery = int.Parse(Request.QueryString["IdMesa"]);
-            factura.agregarFactura(IdQuery);
+            factura.agregarFactura(IdQuery,IdMozo);
             Response.Redirect("DetalleMesa.aspx?IdMesa=" + IdQuery, false);
+        }
+
+        protected void IdRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Mesas.aspx", false);
         }
     }
 }

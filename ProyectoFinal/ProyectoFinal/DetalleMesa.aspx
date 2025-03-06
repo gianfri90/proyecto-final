@@ -25,7 +25,8 @@
                                 <asp:Label ID="lblTotal" runat="server"></asp:Label>
                             </div>
                         </div>
-                        <asp:Button ID="IdCerrarFactura" runat="server" Text="Cerrar Factura" CssClass="btn btn-primary" onclick="IdCerrarFactura_Click"/>
+                        <asp:Button ID="IdCerrarFactura" runat="server" Text="Cerrar Factura" CssClass="btn btn-primary mb-2" onclick="IdCerrarFactura_Click"/>
+                        <asp:Button ID="IdRegresar" runat="server" Text="Volver" CssClass="btn btn-primary" onclick="IdRegresar_Click"/>
                     </div>
                 </div>
             </div>

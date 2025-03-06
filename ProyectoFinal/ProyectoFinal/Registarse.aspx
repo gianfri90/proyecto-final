@@ -22,15 +22,6 @@
                     <asp:TextBox ID="TbContrasenia" runat="server" CssClass="form-control mb-2" placeholder="Contraseña"></asp:TextBox>
                 </div>
                 <div class="ms-n1">
-
-                    <%if (!Mostrar)
-                        {%>
-                    <asp:Button ID="BtMostrarContraña" runat="server" Text="Mostrar" CssClass="btn btn-primary" OnClick="BtMostrarContraña_Click" />
-                    <%}
-                        else
-                        {%>
-                    <asp:Button ID="BtOcultarContraseña" runat="server" Text="Ocultar" CssClass="btn btn-primary" OnClick="BtOcultarContraseña_Click" />
-                    <%}%>
                 </div>
             </div><div class="d-flex w-100 align-items-center">
                 <div class="mb-3">

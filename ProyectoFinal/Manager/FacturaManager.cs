@@ -9,13 +9,14 @@ namespace Manager
 {
     public class FacturaManager
     {
-        public void agregarFactura(int IdMesa)
+        public void agregarFactura(int IdMesa,int IdMozo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearProcedimiento("sp_AgregarFactura");
                 datos.setearParametros("@IdMesa", IdMesa);
+                datos.setearParametros("@IdUsuario", IdMozo);
                 datos.ejecutarEscalar();
             }
             catch (Exception)
