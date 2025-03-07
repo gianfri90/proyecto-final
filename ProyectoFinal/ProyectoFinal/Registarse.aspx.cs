@@ -67,6 +67,12 @@ namespace ProyectoFinal
                 Response.Redirect("error.aspx", false);
                 return;
             }
+            if(TbApellido.Text.Length == 0 || TbNombre.Text.Length == 0)
+            {
+                Session.Add("error", "El campo nombre y el campo apellido son obligatorios");
+                Response.Redirect("error.aspx", false);
+                return;
+            }
             if (TbContrasenia.Text == TbConfirmarConftraseña.Text && TbContrasenia.Text.Length > 4)
             {
                 usuario.Nombre = TbNombre.Text;

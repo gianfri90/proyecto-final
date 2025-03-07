@@ -105,7 +105,80 @@ namespace Manager
             return total;
         }
 
+        public decimal TotalMensual()
+        {
+            decimal total = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_TotalMensual");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    total = (decimal)datos.Lector["total"];
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return total;
+        }
+
+        public int totalMesasAtendidas()
+        {
+            int total = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_MesasCerradas");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    total = (int)datos.Lector["cantidadAtendida"];
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return total;
+        }
+
+        public int totalMesasAtendidasMensual()
+        {
+            int total = 0;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_MesasCerradasMensual");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    total = (int)datos.Lector["cantidadAtendida"];
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return total;
+        }
 
     }
 }

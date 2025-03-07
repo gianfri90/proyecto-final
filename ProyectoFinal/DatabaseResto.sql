@@ -311,10 +311,28 @@ begin
 end
 go
 
-create or alter procedure sp_ExisteMesa(
-	@NumeroMesa int
-)as
-begin
-	select 1 as existe from Mesas where @NumeroMesa = NumeroMesa
-end
+create or alter procedure sp_TotalMensual
+AS
+BEGIN 
+	select isnull(sum(precio),0) as total from detalleMesa dm
+	inner join factura f on f.IdFactura = dm.IdFactura
+	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
+	where MONTH(ma.Fecha) = MONTH(GETDATE()) AND YEAR(ma.Fecha) = YEAR(GETDATE()) AND f.Estado = 'CERRADO';
+END
+go
+
+create or alter procedure sp_MesasCerradasMensual
+AS 
+BEGIN 
+	select count((f.IdFactura)) as cantidadAtendida from factura f
+	where MONTH(f.Fecha) = MONTH(GETDATE()) AND YEAR(f.Fecha) = YEAR(GETDATE()) AND f.Estado = 'CERRADO';
+END
+go
+
+create or alter procedure sp_MesasCerradas
+AS 
+BEGIN 
+	select count((f.IdFactura)) as cantidadAtendida from factura f
+	where f.fecha = CAST(GETDATE() AS DATE) AND f.Estado = 'CERRADO';
+END
 
