@@ -33,7 +33,7 @@ namespace ProyectoFinal
         private void cargarTotal()
         {
             FacturaManager factura = new FacturaManager();
-            LbTotalRecaudado.Text = factura.TotalRecaudado().ToString("F2");
+            LbTotalRecaudado.Text = "$"+factura.TotalRecaudado().ToString("F2");
         }
 
     }

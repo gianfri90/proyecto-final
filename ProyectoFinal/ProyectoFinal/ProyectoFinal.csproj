@@ -73,7 +73,6 @@
     <Content Include="AsignacionMesas.aspx" />
     <Content Include="DetalleInsumo.aspx" />
     <Content Include="DetalleMesa.aspx" />
-    <Content Include="EliminarInsumo.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="IniciarSesion.aspx" />
@@ -127,13 +126,6 @@
     </Compile>
     <Compile Include="DetalleMesa.aspx.designer.cs">
       <DependentUpon>DetalleMesa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EliminarInsumo.aspx.cs">
-      <DependentUpon>EliminarInsumo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EliminarInsumo.aspx.designer.cs">
-      <DependentUpon>EliminarInsumo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

@@ -2,6 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h1>Mis Mesas</h1>
+    <%if (DgvMesa.Rows.Count == 0)
+        {%>
+    <p>Aun no tienes mesas asignadas</p>
+    <% } %>
     <div class="row">
         <div class="col-10">
             <div class="m-3">

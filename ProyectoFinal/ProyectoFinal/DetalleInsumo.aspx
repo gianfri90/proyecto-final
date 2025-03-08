@@ -26,6 +26,11 @@
                 <asp:RequiredFieldValidator ID="rfvPrecio" runat="server" CssClass="validator" ControlToValidate="TbPrecio" ErrorMessage="Este campo es requerido."></asp:RequiredFieldValidator>
                 <asp:RangeValidator ID="rvPrecio" runat="server" CssClass="validator" ErrorMessage="Ingrese un rango válldo. Utilice coma para decimales." ControlToValidate="TbPrecio" Type="Currency" MinimumValue="1,0" MaximumValue="10000000,0"></asp:RangeValidator>
             </div>
+            <div class="m-3">
+                <asp:Button ID="BtEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary" OnClick="BtEliminar_Click"/>
+                <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
+                <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click" />
+            </div>
         </div>
         <div class="col-3">
             <div class="m-3">
@@ -48,11 +53,6 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-        </div>
-        <div class="m-3">
-            <asp:Button ID="BtEliminar" runat="server" Text="Eliminar" CssClass="btn btn-primary" OnClick="BtEliminar_Click"/>
-            <asp:Button ID="btnModificar" CssClass="btn btn-primary" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
-            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-secondary" Text="Cancelar" OnClick="btnCancelar_Click" />
         </div>
     </div>
 </asp:Content>

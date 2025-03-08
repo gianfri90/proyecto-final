@@ -11,5 +11,6 @@ namespace Dominio
         public Usuario usuario {  get; set; }
         public Mesa mesa { get; set; }
         public DateTime? Fecha { get; set; }
+
     }
 }

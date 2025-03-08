@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restoran</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -15,67 +15,63 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <asp:ScriptManager runat="server" />
-        <nav class ="nav nav-tabs ">
-            <div class ="container-fluid">            
+        <asp:ScriptManager runat="server" />
+        <nav class="nav nav-tabs ">
+            <div class="container-fluid">
                 <div class="d-flex w-110 align-items-center">
                     <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
                         {%>
-                        <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
+                    <a class="navbar-brand me-auto" href="Default.aspx">Home</a>
                     <%}
                         else if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == false)
                         {%>
-                        <a class="navbar-brand me-auto" href="Mesas.aspx">Home</a>
+                    <a class="navbar-brand me-auto" href="Mesas.aspx">Home</a>
                     <%}
-                    else
-                    {%>
-                         <a class="navbar-brand me-auto" enable="false" href="">Home</a>
+                        else
+                        {%>
+                    <a class="navbar-brand me-auto" enable="false" href="">Home</a>
                     <%}%>
-                    <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burguer house</span>
-                        <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
-                            <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == true)
-                                {%>
-                                    <li class="nav-brand"><a class="nav-link" href="/Registarse.aspx">Registrar</a></li>
-                                    <a class ="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insumos
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="/AgregarInsumo.aspx">Nuevo Insumo</a></li>
-                                        <li><a class="dropdown-item" href="/ListarInsumo.aspx">Listar Insumo</a></li>
-                                    </ul>
-                                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="AsignacionMesas.aspx">Asignar Mesas</a></li>
-                                        <li><a class="dropdown-item" href="DetalleMozo.aspx">Detalle Mozos</a></li>
-                                    </ul>
-
-                               <% }%>
-                            <%if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador() == false)
-                                {%>
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mis Mesas
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="Mesas.aspx">Mesas</a></li>
-                            </ul>
-                            <%} %>
-                            <%if (Session["Usuario"] != null)
-                                {
-
-                            %>
-                                <asp:Button ID="BtSalir" runat="server" CssClass="nav-link" Text="Salir" type="text" OnClick="BtSalir_Click" />
-                            <%}
-                                else
-                                {%>
-                                <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">IniciarSesion</a></li>
-                            <% } %>
+                    <span class="navbar-brand mb-0 h1 mx-auto text-center">The Burger House</span>
+                    <ul class="nav nav-tabs ms-auto mb-2 mb-lg-0">
+                        <%  if (Session["Usuario"] != null && ((Dominio.Usuario)(Session["Usuario"])).esAdministrador())
+                            {%>
+                        <li class="nav-brand"><a class="nav-link" href="/Registarse.aspx">Registrar</a></li>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Insumos
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/AgregarInsumo.aspx">Nuevo Insumo</a></li>
+                            <li><a class="dropdown-item" href="/ListarInsumo.aspx">Listar Insumo</a></li>
                         </ul>
-                    </div>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mesas
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="AsignacionMesas.aspx">Asignar Mesas</a></li>
+                            <li><a class="dropdown-item" href="DetalleMozo.aspx">Detalle Mozos</a></li>
+                        </ul>
+
+                        <% }%>
+                        <%if (Session["Usuario"] != null && !((Dominio.Usuario)(Session["Usuario"])).esAdministrador())
+                            {%>
+                        <a class="nav-link" href="Mesas.aspx" role="button">Mis Mesas</a>
+                        <%} %>
+                        <%if (Session["Usuario"] != null)
+                            {
+
+                        %>
+                        <asp:Button ID="BtSalir" runat="server" CssClass="nav-link" Text="Salir" type="text" OnClick="BtSalir_Click" />
+                        <%}
+                            else
+                            {%>
+                        <li class="nav-brand"><a class="nav-link active" href="/IniciarSesion.aspx">Iniciar Sesión</a></li>
+                        <% } %>
+                    </ul>
+                </div>
             </div>
         </nav>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-</form>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
 </body>
 </html>

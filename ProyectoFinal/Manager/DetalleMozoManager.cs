@@ -15,7 +15,7 @@ namespace Manager
             List<DetalleMozo> DetalleMozos = new List<DetalleMozo>();
             try
             {
-                datos.setearProcedimiento("sp_DetalleMosos");
+                datos.setearProcedimiento("sp_DetalleMoso");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

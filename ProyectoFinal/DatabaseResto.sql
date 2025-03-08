@@ -30,7 +30,7 @@ create table Menu(
 	Nombre varchar(50) not null unique,
 	Precio money not null,
 	stock int not null,
-	Imagen varchar(300),
+	Imagen varchar(500),
 	estado bit not null,
 	eliminado BIT NOT NULL DEFAULT 0
 );
@@ -120,10 +120,12 @@ go
 
 
 create or alter procedure sp_AsignarMesero(
-	@IdMesa int,
+	@NumeroMesa int,
 	@IdMesero int
 )as
 begin
+	declare @IdMesa int;
+	select @IdMesa = IdMesa from mesas where NumeroMesa = @NumeroMesa
 	IF NOT EXISTS (SELECT * FROM MesasAsignadas WHERE IdMesa = @IdMesa AND fecha = CAST(GETDATE() AS DATE))
 	BEGIN
 	    INSERT INTO MesasAsignadas (IdMesa, IdUsuario, Fecha)
@@ -289,7 +291,7 @@ begin
 end
 go
 
-create or alter procedure sp_DetalleMosos
+create or alter procedure sp_DetalleMoso
 as
 begin
 	SELECT u.nombre +' '+u.Apellido as Nombre , sum(dm.precio) as Total, count(distinct(f.IdFactura)) as cantidadAtendida from factura f
@@ -298,6 +300,21 @@ begin
 	where f.fecha = CAST(GETDATE() AS DATE)
 	group by u.Nombre, u.Apellido;
 end
+go
 
+create or alter procedure sp_AgregarMesas(
+	@NumeroMesa int
+)as
+begin
+	INSERT INTO Mesas (NumeroMesa)
+	values (@NumeroMesa);
+end
+go
 
-SELECT * from Usuario u 
+create or alter procedure sp_ExisteMesa(
+	@NumeroMesa int
+)as
+begin
+	select 1 as existe from Mesas where @NumeroMesa = NumeroMesa
+end
+

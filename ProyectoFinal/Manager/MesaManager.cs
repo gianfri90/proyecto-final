@@ -68,9 +68,9 @@ namespace Manager
         public int CantidadMesasSinAsignar()
         {
             int cantidadMesas = 0;
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                AccesoDatos datos = new AccesoDatos();
                 datos.setearProcedimiento("sp_CantidadMesasAsignadas");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
@@ -83,7 +83,31 @@ namespace Manager
 
                 throw ex;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
             return cantidadMesas;
+        }
+
+        public void AgregarMesa(int NumeroMesa)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("sp_AgregarMesas");
+                datos.setearParametros("@NumeroMesa", NumeroMesa);
+                datos.ejecutarEscalar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
     }

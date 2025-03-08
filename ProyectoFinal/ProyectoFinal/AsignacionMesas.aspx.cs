@@ -47,19 +47,40 @@ namespace ProyectoFinal
         protected void DgvMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = DgvMesaAsignadas.SelectedRow;
-            int IdMesa = int.Parse(row.Cells[0].Text);
+            int NumeroMesa = int.Parse(row.Cells[0].Text);
             Asignar = true;
-            Session.Add("IdMesa",IdMesa);
+            Session.Add("NumeroMesa",NumeroMesa);
         }
 
         protected void IdAcepar_Click(object sender, EventArgs e)
         {
             MesasAsignadasManager MesasAsignadas = new MesasAsignadasManager();
-            int IdMesa = (int)Session["IdMesa"];
+            int NumeroMesa = (int)Session["NumeroMesa"];
             int IdMesero = int.Parse(DdlMesero.SelectedValue);
-            MesasAsignadas.AsignarMesero(IdMesa, IdMesero);
+            MesasAsignadas.AsignarMesero(NumeroMesa, IdMesero);
             Asignar = false;
             Response.Redirect("AsignacionMesas.aspx", false);
+        }
+
+        protected void BtAgregar_Click(object sender, EventArgs e)
+        {
+            MesaManager MesasManager= new MesaManager();
+            if(TbNumeroMesa.Text.Length == 0)
+            {
+                return;
+            }
+            int NumeroMesa = int.Parse(TbNumeroMesa.Text);
+            try
+            {
+                MesasManager.AgregarMesa(NumeroMesa);
+                Response.Redirect("AsignacionMesas.aspx", false);
+            }
+            catch (Exception)
+            {
+
+                Session.Add("error", "La mesa ya esta creada");
+                Response.Redirect("Error.aspx");
+            }
         }
     }
 }

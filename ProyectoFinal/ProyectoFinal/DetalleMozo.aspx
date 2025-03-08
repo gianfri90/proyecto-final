@@ -14,7 +14,7 @@
                 <columns>
                     <asp:BoundField HeaderText="Nombre Mesero" DataField="NombreMozo" />
                     <asp:BoundField HeaderText="Recaudado" DataField="TotalCobrado" DataFormatString="${0:0.00}" HtmlEncode="false" />
-                    <asp:BoundField HeaderText="Mesas Atendidas" DataField="MesasAtendidas" />
+                    <asp:BoundField HeaderText="Facturas Cerradas" DataField="MesasAtendidas" />
                 </columns>
             </asp:GridView>
         </div>

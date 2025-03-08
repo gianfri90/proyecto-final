@@ -7,9 +7,9 @@
             <div class="m-3">
                 <div class="card text-white bg-primary mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Recaudacion</h5>
+                        <h5 class="card-title">Recaudación</h5>
                         <p class="card-text fs-3">
-                            <asp:Label ID="LbTotalRecaudado" runat="server"></asp:Label>
+                            <asp:Label ID="LbTotalRecaudado" runat="server" type="text"></asp:Label>
                         </p>
                     </div>
                 </div>

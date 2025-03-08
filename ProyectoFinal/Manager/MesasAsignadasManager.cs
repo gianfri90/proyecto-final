@@ -47,14 +47,14 @@ namespace Manager
             return aux;
         }
 
-        public void AsignarMesero(int idMesa,int idMesero)
+        public void AsignarMesero(int NumeroMesa,int idMesero)
         {
             MesasAsignadas mesasAsignadas = new MesasAsignadas();
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearProcedimiento("sp_AsignarMesero");
-                datos.setearParametros("@IdMesa", idMesa);
+                datos.setearParametros("@NumeroMesa", NumeroMesa);
                 datos.setearParametros("@IdMesero", idMesero);
                 datos.ejecutarEscalar();
             }
