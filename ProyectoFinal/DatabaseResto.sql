@@ -286,8 +286,7 @@ as
 begin
 	select isnull(sum(precio),0) as total from detalleMesa dm
 	inner join factura f on f.IdFactura = dm.IdFactura
-	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
-	where ma.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO'	
+	where f.Fecha  = CAST(GETDATE() AS DATE) and f.Estado = 'CERRADO';
 end
 go
 
@@ -316,8 +315,7 @@ AS
 BEGIN 
 	select isnull(sum(precio),0) as total from detalleMesa dm
 	inner join factura f on f.IdFactura = dm.IdFactura
-	inner join MesasAsignadas ma on ma.IdMesa = f.IdMesa
-	where MONTH(ma.Fecha) = MONTH(GETDATE()) AND YEAR(ma.Fecha) = YEAR(GETDATE()) AND f.Estado = 'CERRADO';
+	where MONTH(f.Fecha) = MONTH(GETDATE()) AND YEAR(f.Fecha) = YEAR(GETDATE()) AND f.Estado = 'CERRADO';
 END
 go
 

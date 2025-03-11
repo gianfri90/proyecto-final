@@ -23,8 +23,8 @@ go
 
 INSERT INTO Usuario (Email, Contrasenia, IdTipoUsuario,Nombre,Apellido)
 VALUES 
-('mesero2@ejemplo.com', 'password123', 2,'Mesero1','ejemplo1'),
-('mesero@ejemplo.com', 'password123', 2,'Mesero2','ejempl2'),
+('mesero@ejemplo.com', 'password123', 2,'Mesero1','ejemplo1'),
+('mesero2@ejemplo.com', 'password123', 2,'Mesero2','ejempl2'),
 ('admin@ejemplo.com', 'admin123', 1,'Admin','')
 go
 
